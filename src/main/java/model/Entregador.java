@@ -8,6 +8,17 @@ package model;
  *
  * @author phfde
  */
-public class Entregador {
+public class Entregador extends Pessoa {
+    
+    
+    
+    
+    
+
+ 
+    
+    
+
+    
     
 }

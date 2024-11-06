@@ -3,6 +3,7 @@ view\FrmPrincipal$2.class
 view\DlgRelatorioSaidas$2.class
 control\GerenciadorDominio.class
 view\DlgSaida.class
+model\HistoricoStatusPK.class
 dao\EntregadorDAO.class
 view\DlgCadEntregadores$5.class
 view\FrmPrincipal$7.class
@@ -15,6 +16,7 @@ view\DlgEntrada.class
 view\DlgCadClientes$5.class
 view\DlgRelatorioSaidas$1.class
 view\DlgRelatorioEntradas$1.class
+model\Status.class
 model\Pessoa.class
 view\DlgRelatorioSaidas.class
 view\DlgCadClientes$1.class
@@ -65,6 +67,7 @@ model\Cliente.class
 view\DlgCadEntregadores$8.class
 view\DlgCadEntregadores$6.class
 view\FrmPrincipal$6.class
+model\HistoricoStatus.class
 view\FrmPrincipal$5.class
 view\DlgCadEntregadores$9.class
 view\FrmPrincipal$1.class

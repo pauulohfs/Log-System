@@ -20,7 +20,7 @@ public class Cliente extends Pessoa {
     @Id
     @GeneratedValue ( strategy = GenerationType.IDENTITY)
     private int idCliente;
-    @Column (nullable = false , length = 10)
+    @Column (nullable = false)
     private String plano;
 
     public Cliente(String plano, String nome, String cpf, Date dtNasc, String estadoCivil) {

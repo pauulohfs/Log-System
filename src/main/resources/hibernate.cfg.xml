@@ -16,9 +16,9 @@
     
     <mapping class="model.Carro"></mapping>
     <mapping class="model.Endereco"></mapping>
-    <mapping class="model.Entregador"></mapping>
     <mapping class="model.Pessoa"></mapping>
-    <mapping class="model.Cliente"></mapping>
+    <mapping class="model.Pacote"></mapping>
+    
     
     
      

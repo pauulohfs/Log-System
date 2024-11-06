@@ -9,11 +9,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -35,8 +39,13 @@ public abstract class Pessoa implements Serializable {
     @Column (nullable = false, length = 10)
     private String estadoCivil;
     
-    @Transient
-    private Endereco endereco;
+    @ManyToMany
+    @JoinTable ( name="Pessoa_Endereco", 
+           	 joinColumns = { @JoinColumn (name="idPessoa") },
+                 inverseJoinColumns = { @JoinColumn(name="idEndereco") }
+             	)
+    private List<Endereco> end;
+        
 
     public Pessoa(String nome, String cpf, Date dtNasc, String estadoCivil) {
         this.nome = nome;

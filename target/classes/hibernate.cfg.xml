@@ -16,6 +16,10 @@
     
     <mapping class="model.Carro"></mapping>
     <mapping class="model.Endereco"></mapping>
+    <mapping class="model.Pessoa"></mapping>
+    <mapping class="model.Pacote"></mapping>
+    
+    
     
      
   </session-factory>

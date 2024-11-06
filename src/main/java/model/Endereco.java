@@ -5,7 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import java.io.Serializable;
+import java.util.List;
 
 
 
@@ -20,18 +24,26 @@ public class Endereco implements Serializable {
     private int idEndereco;
     @Column (nullable = false, length = 9)
     private String cep;   
-    @Column (nullable = false, length = 20)
+    @Column (nullable = false)
     private String bairro;
-    @Column(nullable = false , length = 30)
+    @Column(nullable = false )
     private String logradouro;
-    @Column (nullable = false , length = 4)
+    @Column (nullable = false )
     private int numero;
-    @Column(length =  30)
+    @Column
     private String complemento;
-    @Column(nullable = false, length = 25)
+    @Column(nullable = false)
     private String cidade;
     @Column(nullable = false , length = 2)
-    private String uf;   
+    private String uf;
+    
+    @ManyToMany
+    @JoinTable ( name="Pessoa_Endereco", 
+           	 joinColumns = { @JoinColumn (name="idEndereco") },
+                 inverseJoinColumns = { @JoinColumn(name="idPessoa") }
+             	)
+    
+    private List<Pessoa> pessoas;
     
     
     public Endereco() {

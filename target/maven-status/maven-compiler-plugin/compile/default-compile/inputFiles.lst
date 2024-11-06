@@ -1,20 +1,22 @@
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\model\Carro.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\model\Pessoa.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\view\DlgEntrada.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\model\Entregador.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\view\DlgRelatorioEntregas.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\view\DlgBuscarEncomenda.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\control\GerenciadorDominio.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\control\GerenciadorInterface.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\dao\EntregadorDAO.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\model\Endereco.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\view\FrmPrincipal.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\control\FuncoesUteis.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\view\DlgCadEntregadores.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\view\DlgStatusSaida.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\view\DlgSaida.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\dao\CarroDAO.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\view\DlgRelatorioSaidas.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\view\DlgCadClientes.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\view\DlgRelatorioEntradas.java
-D:\Conteúdo-SI\Programação\POO2\Log System\src\main\java\dao\ConexaoHibernate.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\dao\CarroDAO.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgCadClientes.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Pacote.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgRelatorioEntradas.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\dao\EntregadorDAO.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\control\GerenciadorDominio.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Pessoa.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgRelatorioSaidas.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\control\FuncoesUteis.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Carro.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Endereco.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgBuscarEncomenda.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Entregador.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\dao\ConexaoHibernate.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Cliente.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgStatusSaida.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgRelatorioEntregas.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgSaida.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgCadEntregadores.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\control\GerenciadorInterface.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgEntrada.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\FrmPrincipal.java

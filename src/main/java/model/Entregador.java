@@ -4,11 +4,67 @@
  */
 package model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import java.util.Date;
+
 /**
  *
  * @author phfde
  */
+@Entity
 public class Entregador extends Pessoa {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idEntregador;
+    @Temporal ( value = TemporalType.DATE) 
+    @Column ( nullable = false ,updatable = false)
+    private Date dtAdmissao;
+    
+
+    public Entregador(Date dtAdmissao, String nome, String cpf, Date dtNasc, String estadoCivil) {
+        super(nome, cpf, dtNasc, estadoCivil);
+        this.dtAdmissao = dtAdmissao;
+    }
+
+    public Entregador(int idEntregador, Date dtAdmissao, int idPessoa, String nome, String cpf, Date dtNasc, String estadoCivil) {
+        super(idPessoa, nome, cpf, dtNasc, estadoCivil);
+        this.idEntregador = idEntregador;
+        this.dtAdmissao = dtAdmissao;
+    }
+
+    public Entregador(){
+
+    }
+
+    public int getIdEntregador() {
+        return idEntregador;
+    }
+
+    public void setIdEntregador(int idEntregador) {
+        this.idEntregador = idEntregador;
+    }
+
+    public Date getDtAdmissao() {
+        return dtAdmissao;
+    }
+
+    public void setDtAdmissao(Date dtAdmissao) {
+        this.dtAdmissao = dtAdmissao;
+    }
+
+    @Override
+    public String toString() {
+        return "Entregador{" + "idEntregador=" + idEntregador + ", dtAdmissao=" + dtAdmissao + '}';
+    }
+    
+    
+    
     
     
     

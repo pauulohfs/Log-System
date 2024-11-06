@@ -47,6 +47,7 @@ view\DlgRelatorioSaidas$4.class
 view\DlgEntrada$1.class
 dao\CarroDAO.class
 view\DlgCadClientes$2.class
+model\Pacote.class
 view\DlgRelatorioEntregas$4.class
 view\DlgStatusSaida$2.class
 view\DlgBuscarEncomenda$1.class
@@ -60,6 +61,7 @@ model\Carro.class
 control\GerenciadorInterface.class
 view\DlgBuscarEncomenda.class
 view\FrmPrincipal$3.class
+model\Cliente.class
 view\DlgCadEntregadores$8.class
 view\DlgCadEntregadores$6.class
 view\FrmPrincipal$6.class

@@ -9,6 +9,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -16,16 +20,22 @@ import java.util.Date;
  * @author phfde
  */
 @Entity
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPessoa;
-    @Column
+    @Column (name = "nomePessoa", nullable = false )
     private String nome;
+    @Column (unique = true, nullable = false, length = 14, updatable = false )
     private String cpf;
+    @Temporal ( value = TemporalType.DATE) 
+    @Column (updatable = false)
     private Date dtNasc;
+    @Column (nullable = false, length = 10)
     private String estadoCivil;
+    
+    @Transient
     private Endereco endereco;
 
     public Pessoa(String nome, String cpf, Date dtNasc, String estadoCivil) {

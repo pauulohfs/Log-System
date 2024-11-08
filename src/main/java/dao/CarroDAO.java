@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import model.Carro;
+import model.Veiculo;
 
 /**
  *
@@ -29,7 +29,7 @@ public class CarroDAO {
 
     }
 
-    public List<Carro> listar() {
+    public List<Veiculo> listar() {
         /*List<Carro> listaCarros = new ArrayList();
         Statement state = ConexaoHibernate.obterConexao().createStatement();
         String sql ="* SELECT * FROM Carro ";

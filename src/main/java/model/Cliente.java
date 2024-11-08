@@ -7,7 +7,10 @@ package model;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -19,6 +22,9 @@ public class Cliente extends Pessoa {
 
     @Column (nullable = false)
     private String plano;
+    
+    @OneToMany ( mappedBy = "cliente", fetch = FetchType.LAZY )
+    private List<Pacote> pacotes;
 
     public Cliente(String plano, String nome, String cpf, Date dtNasc, String estadoCivil) {
         super(nome, cpf, dtNasc, estadoCivil);

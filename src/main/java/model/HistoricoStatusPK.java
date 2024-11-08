@@ -4,10 +4,44 @@
  */
 package model;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import java.io.Serializable;
+
 /**
  *
  * @author phfde
  */
-public class HistoricoStatusPK {
+public class HistoricoStatusPK implements Serializable {
+
+    @ManyToOne
+    @JoinColumn(name = "idPacote")
+    private Pacote pacote;
+
+    @ManyToOne
+    @JoinColumn(name = "idStatus")
+    private Status status;
+
+    public HistoricoStatusPK(Pacote pacote, Status status) {
+        this.pacote = pacote;
+        this.status = status;
+    }
+
+    public Pacote getPacote() {
+        return pacote;
+    }
+
+    public void setPacote(Pacote pacote) {
+        this.pacote = pacote;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
     
+
 }

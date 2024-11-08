@@ -2,7 +2,6 @@ D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgCadClie
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\control\GerenciadorDominio.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Pessoa.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\control\FuncoesUteis.java
-D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Carro.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Status.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgBuscarEncomenda.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Entregador.java
@@ -18,6 +17,7 @@ D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgRelator
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\dao\EntregadorDAO.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgRelatorioSaidas.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\HistoricoStatus.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Veiculo.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Endereco.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\HistoricoStatusPK.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\dao\ConexaoHibernate.java

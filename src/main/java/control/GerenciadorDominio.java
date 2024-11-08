@@ -7,7 +7,7 @@ package control;
 import dao.CarroDAO;
 import dao.ConexaoHibernate;
 import java.util.List;
-import model.Carro;
+import model.Veiculo;
 
 /**
  *
@@ -22,7 +22,7 @@ public class GerenciadorDominio {
         carroDAO = new CarroDAO();
     }
     
-    public List<Carro> listarCarros() {
+    public List<Veiculo> listarCarros() {
         return carroDAO.listar();
     
     }    

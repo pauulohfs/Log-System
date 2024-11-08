@@ -4,6 +4,14 @@
  */
 package model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,46 +19,34 @@ import java.util.Date;
  *
  * @author phfde
  */
-public class HistoricoStatus implements Serializable{
-     private int idHistorico;
-     private Date dtModificacao;
+@Entity
+public class HistoricoStatus implements Serializable {
 
-    public HistoricoStatus(Date dtModificacao) {
-        this.dtModificacao = dtModificacao;
+    @EmbeddedId
+    private HistoricoStatusPK chaveComposta;
+
+    @Temporal(value = TemporalType.DATE)
+    @Column(nullable = false, updatable = false)
+    private Date dtModificacao;
+
+    public HistoricoStatusPK getChaveComposta() {
+        return chaveComposta;
     }
 
-    public HistoricoStatus(int idHistorico, Date dtModificacao) {
-        this.idHistorico = idHistorico;
-        this.dtModificacao = dtModificacao;
+    public void setPacote(Pacote pacote) {
+        this.chaveComposta.setPacote(pacote);
     }
 
-    public HistoricoStatus() {
+    public void setStatus(Status status) {
+        this.chaveComposta.setStatus(status);
     }
 
-    public int getIdHistorico() {
-        return idHistorico;
+    public Pacote getPacote() {
+        return this.chaveComposta.getPacote();
     }
 
-    public void setIdHistorico(int idHistorico) {
-        this.idHistorico = idHistorico;
+    public Status getStatus() {
+        return this.chaveComposta.getStatus();
     }
 
-    public Date getDtModificacao() {
-        return dtModificacao;
-    }
-
-    public void setDtModificacao(Date dtModificacao) {
-        this.dtModificacao = dtModificacao;
-    }
-
-    @Override
-    public String toString() {
-        return "HistoricoStatus{" + "idHistorico=" + idHistorico + ", dtModificacao=" + dtModificacao + '}';
-    }
-    
-    
-    
-    
-    
-    
 }

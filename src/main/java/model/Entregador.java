@@ -5,10 +5,8 @@
 package model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.util.Date;
@@ -18,10 +16,8 @@ import java.util.Date;
  * @author phfde
  */
 @Entity
+@DiscriminatorValue("2")
 public class Entregador extends Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEntregador;
     @Temporal ( value = TemporalType.DATE) 
     @Column ( nullable = false ,updatable = false)
     private Date dtAdmissao;
@@ -34,7 +30,6 @@ public class Entregador extends Pessoa {
 
     public Entregador(int idEntregador, Date dtAdmissao, int idPessoa, String nome, String cpf, Date dtNasc, String estadoCivil) {
         super(idPessoa, nome, cpf, dtNasc, estadoCivil);
-        this.idEntregador = idEntregador;
         this.dtAdmissao = dtAdmissao;
     }
 
@@ -42,13 +37,6 @@ public class Entregador extends Pessoa {
 
     }
 
-    public int getIdEntregador() {
-        return idEntregador;
-    }
-
-    public void setIdEntregador(int idEntregador) {
-        this.idEntregador = idEntregador;
-    }
 
     public Date getDtAdmissao() {
         return dtAdmissao;
@@ -60,8 +48,9 @@ public class Entregador extends Pessoa {
 
     @Override
     public String toString() {
-        return "Entregador{" + "idEntregador=" + idEntregador + ", dtAdmissao=" + dtAdmissao + '}';
+        return "Entregador{" + "dtAdmissao=" + dtAdmissao + '}';
     }
+
     
     
     

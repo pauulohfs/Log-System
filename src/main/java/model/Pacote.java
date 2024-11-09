@@ -12,10 +12,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -44,6 +46,10 @@ public class Pacote implements Serializable {
     @ManyToOne ( fetch = FetchType.EAGER )
     @JoinColumn ( name = "idCliente")
     private Cliente cliente;
+    
+    @OneToMany(mappedBy = "chaveComposta.pacote")  
+    private List<HistoricoStatus> historicoStatus;
+    
 
     public Pacote() {
     }

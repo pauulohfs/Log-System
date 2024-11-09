@@ -9,7 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -22,6 +24,10 @@ public class Status implements Serializable {
      private int idStatus;
     @Column( nullable = false)
      private String nomeStatus;
+    
+    @OneToMany(mappedBy = "chaveComposta.status")  // referencia o campo na chave composta de HistoricoStatus
+    private List<HistoricoStatus> historicoStatus;
+    
 
     public Status(int idStatus, String nomeStatus) {
         this.idStatus = idStatus;

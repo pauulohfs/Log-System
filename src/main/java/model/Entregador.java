@@ -22,32 +22,33 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("2")
 public class Entregador extends Pessoa {
-    @Temporal ( value = TemporalType.DATE) 
-    @Column ( nullable = false ,updatable = false)
+
+    @Temporal(value = TemporalType.DATE)
+    @Column(nullable = false, updatable = false)
     private Date dtAdmissao;
-    
+
     @OneToOne
-    @JoinColumn ( name = "idVeiculo")
+    @JoinColumn(name = "idVeiculo")
     private Veiculo veiculo;
-    
+
     @OneToMany(mappedBy = "entregador")
     private List<Pacote> pacotes;
-    
 
-    public Entregador(Date dtAdmissao, String nome, String cpf, Date dtNasc, String estadoCivil) {
+    public Entregador(Date dtAdmissao, Veiculo veiculo, List<Pacote> pacotes, String nome, String cpf, Date dtNasc, String estadoCivil) {
         super(nome, cpf, dtNasc, estadoCivil);
         this.dtAdmissao = dtAdmissao;
+        this.veiculo = veiculo;
     }
 
-    public Entregador(int idEntregador, Date dtAdmissao, int idPessoa, String nome, String cpf, Date dtNasc, String estadoCivil) {
+    public Entregador(Date dtAdmissao, Veiculo veiculo, int idPessoa, String nome, String cpf, Date dtNasc, String estadoCivil) {
         super(idPessoa, nome, cpf, dtNasc, estadoCivil);
         this.dtAdmissao = dtAdmissao;
-    }
-
-    public Entregador(){
+        this.veiculo = veiculo;
 
     }
+   public Entregador() {
 
+    }
 
     public Date getDtAdmissao() {
         return dtAdmissao;
@@ -57,24 +58,22 @@ public class Entregador extends Pessoa {
         this.dtAdmissao = dtAdmissao;
     }
 
-    @Override
-    public String toString() {
-        return "Entregador{" + "dtAdmissao=" + dtAdmissao + '}';
+    public Veiculo getVeiculo() {
+        return veiculo;
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    public List<Pacote> getPacotes() {
+        return pacotes;
+    }
+
+    public void setPacotes(List<Pacote> pacotes) {
+        this.pacotes = pacotes;
+    }
 
  
-    
-    
 
-    
-    
 }

@@ -40,8 +40,6 @@ public class Cliente extends Pessoa {
 
     }
 
-
-
     public String getPlano() {
         return plano;
     }
@@ -50,10 +48,16 @@ public class Cliente extends Pessoa {
         this.plano = plano;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente{" + "plano=" + plano + '}';
+    public List<Pacote> getPacotes() {
+        return pacotes;
     }
+
+    public void setPacotes(List<Pacote> pacotes) {
+        this.pacotes = pacotes;
+    }
+
+
+
 
   
     

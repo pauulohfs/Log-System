@@ -110,6 +110,30 @@ public class Pacote implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public Entregador getEntregador() {
+        return entregador;
+    }
+
+    public void setEntregador(Entregador entregador) {
+        this.entregador = entregador;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<HistoricoStatus> getHistoricoStatus() {
+        return historicoStatus;
+    }
+
+    public void setHistoricoStatus(List<HistoricoStatus> historicoStatus) {
+        this.historicoStatus = historicoStatus;
+    }
     
     
 }

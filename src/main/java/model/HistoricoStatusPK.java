@@ -27,6 +27,10 @@ public class HistoricoStatusPK implements Serializable {
         this.status = status;
     }
 
+    public HistoricoStatusPK() {
+    }
+    
+
     public Pacote getPacote() {
         return pacote;
     }

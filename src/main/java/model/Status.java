@@ -57,6 +57,15 @@ public class Status implements Serializable {
         this.nomeStatus = nomeStatus;
     }
 
+    public List<HistoricoStatus> getHistoricoStatus() {
+        return historicoStatus;
+    }
+
+    public void setHistoricoStatus(List<HistoricoStatus> historicoStatus) {
+        this.historicoStatus = historicoStatus;
+    }
+    
+
     @Override
     public String toString() {
         return "Status{" + "idStatus=" + idStatus + ", nomeStatus=" + nomeStatus + '}';

@@ -47,6 +47,16 @@ public class HistoricoStatus implements Serializable {
 
     public Status getStatus() {
         return this.chaveComposta.getStatus();
+        
     }
+
+    public Date getDtModificacao() {
+        return dtModificacao;
+    }
+
+    public void setDtModificacao(Date dtModificacao) {
+        this.dtModificacao = dtModificacao;
+    }
+    
 
 }

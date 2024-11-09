@@ -148,6 +148,14 @@ public class Endereco implements Serializable {
         this.numero = numero;
     }
 
+    public List<Pessoa> getPessoas() {
+        return pessoas;
+    }
+
+    public void setPessoas(List<Pessoa> pessoas) {
+        this.pessoas = pessoas;
+    }
+
 
 
     

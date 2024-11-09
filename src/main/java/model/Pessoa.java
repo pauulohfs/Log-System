@@ -49,7 +49,7 @@ public abstract class Pessoa implements Serializable {
            	 joinColumns = { @JoinColumn (name="idPessoa") },
                  inverseJoinColumns = { @JoinColumn(name="idEndereco") }
              	)
-    private List<Endereco> end;
+    private List<Endereco> endereco;
         
 
     public Pessoa(String nome, String cpf, Date dtNasc, String estadoCivil) {
@@ -109,5 +109,14 @@ public abstract class Pessoa implements Serializable {
     public void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
+
+    public List<Endereco> getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(List<Endereco> endereco) {
+        this.endereco = endereco;
+    }
+    
 
 }

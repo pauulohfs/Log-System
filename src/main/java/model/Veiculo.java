@@ -29,24 +29,22 @@ public class Veiculo implements Serializable {
     @JoinColumn ( name = "idVeiculo")
     private Entregador entregador;
 
-    public Veiculo(int idCarro, String modelo, String marca, int anoFabricacao, String tipo, Entregador entregador) {
+    public Veiculo(int idCarro, String modelo, String marca, int anoFabricacao, String tipo) {
         this.idCarro = idCarro;
         this.modelo = modelo;
         this.marca = marca;
         this.anoFabricacao = anoFabricacao;
         this.tipo = tipo;
-        this.entregador = entregador;
     }
 
     public Veiculo() {
     }
 
-    public Veiculo(String modelo, String marca, int anoFabricacao, String tipo, Entregador entregador) {
+    public Veiculo(String modelo, String marca, int anoFabricacao, String tipo) {
         this.modelo = modelo;
         this.marca = marca;
         this.anoFabricacao = anoFabricacao;
         this.tipo = tipo;
-        this.entregador = entregador;
     }
 
     public int getIdCarro() {

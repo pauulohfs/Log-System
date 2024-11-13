@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 
@@ -25,8 +23,7 @@ public class Veiculo implements Serializable {
     @Column(nullable = false, length = 10)
     private String tipo;
     
-    @MapsId
-    @JoinColumn ( name = "idVeiculo")
+    @OneToOne(mappedBy = "veiculo")
     private Entregador entregador;
 
     public Veiculo(int idCarro, String modelo, String marca, int anoFabricacao, String tipo) {

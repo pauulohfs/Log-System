@@ -23,7 +23,7 @@ public class Veiculo implements Serializable {
     @Column(nullable = false, length = 10)
     private String tipo;
     
-    @OneToOne(mappedBy = "veiculo")
+    @OneToOne
     private Entregador entregador;
 
     public Veiculo(int idCarro, String modelo, String marca, int anoFabricacao, String tipo) {

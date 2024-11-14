@@ -11,10 +11,9 @@ D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgRelator
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgSaida.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgCadEntregadores.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\control\GerenciadorInterface.java
-D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\dao\CarroDAO.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Pacote.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgRelatorioEntradas.java
-D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\dao\EntregadorDAO.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\dao\GenericDAO.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgRelatorioSaidas.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\HistoricoStatus.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Veiculo.java
@@ -23,3 +22,4 @@ D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Historico
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\dao\ConexaoHibernate.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgEntrada.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\FrmPrincipal.java
+D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\dao\ClienteDAO.java

@@ -4,6 +4,7 @@
  */
 package model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -27,15 +28,19 @@ public class Entregador extends Pessoa {
     @Column(nullable = false, updatable = false)
     private Date dtAdmissao;
 
-    @OneToOne
+    @OneToOne ( mappedBy = "entregador", cascade = CascadeType.ALL)
     @JoinColumn(name = "idVeiculo")
     private Veiculo veiculo;
 
     @OneToMany(mappedBy = "entregador")
     private List<Pacote> pacotes;
 
-    public Entregador(Date dtAdmissao, Veiculo veiculo, List<Pacote> pacotes, String nome, String cpf, Date dtNasc, String estadoCivil) {
-        super(nome, cpf, dtNasc, estadoCivil);
+    public Entregador(Date dtAdmissao,String modelo, String marca,
+            int anoFabricacao, String tipo, String nome, String cpf, Date dtNasc, String estadoCivil, String cep, String bairro, String cidade
+                ,String logradouro, int numero) {
+        super( nome,  cpf,  dtNasc,  estadoCivil, cep,  bairro,  cidade,  logradouro,  numero);
+        this.veiculo = new Veiculo(modelo, marca, anoFabricacao, tipo);
+        this.veiculo.setEntregador(this);
         this.dtAdmissao = dtAdmissao;
         this.veiculo = veiculo;
     }

@@ -4,7 +4,6 @@ view\DlgRelatorioSaidas$2.class
 control\GerenciadorDominio.class
 view\DlgSaida.class
 model\HistoricoStatusPK.class
-dao\EntregadorDAO.class
 view\DlgCadEntregadores$5.class
 view\FrmPrincipal$7.class
 view\DlgRelatorioEntregas$1.class
@@ -25,6 +24,7 @@ view\FrmPrincipal$13.class
 view\DlgCadClientes$6.class
 view\DlgRelatorioSaidas$3.class
 view\DlgCadClientes$3.class
+dao\ClienteDAO.class
 view\FrmPrincipal.class
 view\DlgEntrada$2.class
 view\DlgStatusSaida.class
@@ -48,8 +48,8 @@ view\FrmPrincipal$4.class
 view\DlgRelatorioSaidas$4.class
 view\DlgEntrada$1.class
 model\Veiculo.class
-dao\CarroDAO.class
 view\DlgCadClientes$2.class
+dao\GenericDAO.class
 model\Pacote.class
 view\DlgRelatorioEntregas$4.class
 view\DlgStatusSaida$2.class

@@ -170,13 +170,7 @@ public class GerenciadorInterface {
     }
 
 
-    public void carregarComboCarros(JComboBox combobox) {
 
-        List lista;
-        lista = gerDom.listarCarros();
-        combobox.setModel(new DefaultComboBoxModel(lista.toArray()));
-
-    }
 
     //private final Dlg config = null;
     public static void main(String args[]) {

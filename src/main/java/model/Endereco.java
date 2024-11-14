@@ -30,12 +30,9 @@ public class Endereco implements Serializable {
     private String logradouro;
     @Column (nullable = false )
     private int numero;
-    @Column
-    private String complemento;
     @Column(nullable = false)
     private String cidade;
-    @Column(nullable = false , length = 2)
-    private String uf;
+
     
     @ManyToMany
     @JoinTable ( name="Pessoa_Endereco", 
@@ -50,38 +47,35 @@ public class Endereco implements Serializable {
     }
 
     
-    public Endereco(String cep, String uf, String bairro, String cidade, String logradouro, String complemento) {
+    public Endereco(String cep, String bairro, String cidade, String logradouro, int numero) {
         this.cep = cep;
-        this.uf = uf;
+        this.numero = numero;
         this.bairro = bairro;
         this.cidade = cidade;
         this.logradouro = logradouro;
-        this.complemento = complemento;
     }
 
     // Para ser UTILIZADO pela classe CLIENTE
     // Sem ID
-    public Endereco(String cep, String bairro, String logradouro, int num, String complemento) {
+    public Endereco(String cep, String bairro, String logradouro, int num) {
         this.cep = cep;
-        this.uf = "";
         this.bairro = bairro;
         this.cidade = "";
         this.logradouro = logradouro;
         this.numero = num;
-        this.complemento = complemento;
+
     }
 
     // Para ser UTILIZADO pela classe CLIENTE
     // Com ID
-    public Endereco(int idEnder, String cep, String bairro, String logradouro, int num, String complemento) {
+    public Endereco(int idEnder, String cep, String bairro, String logradouro, int num) {
         this.idEndereco = idEnder;
         this.cep = cep;
-        this.uf = "";
         this.bairro = bairro;
         this.cidade = "";
         this.logradouro = logradouro;
         this.numero = num;
-        this.complemento = complemento;
+
     }
     
     public int getIdEndereco() {
@@ -100,13 +94,6 @@ public class Endereco implements Serializable {
         this.cep = cep;
     }
 
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
 
     public String getBairro() {
         return bairro;
@@ -132,13 +119,6 @@ public class Endereco implements Serializable {
         this.logradouro = logradouro;
     }
 
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
 
     public int getNumero() {
         return numero;

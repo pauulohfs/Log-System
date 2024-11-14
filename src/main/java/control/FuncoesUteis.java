@@ -173,7 +173,6 @@ public class FuncoesUteis {
             ender.setLogradouro(jsonObject.getString("logradouro"));
             ender.setBairro(jsonObject.getString("bairro") );
             ender.setCidade(jsonObject.getString("localidade") );
-            ender.setUf(jsonObject.getString("uf") );
 
         } else {
             System.out.println("CEP não encontrado.");

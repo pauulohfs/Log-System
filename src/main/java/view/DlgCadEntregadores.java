@@ -8,8 +8,14 @@ import control.FuncoesUteis;
 import control.GerenciadorInterface;
 import java.awt.Color;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import model.Endereco;
+import model.Entregador;
 
 /**
  *
@@ -20,9 +26,12 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
     /**
      * Creates new form DlgCadastroClientes
      */
+    private Entregador entregador;
+
     public DlgCadEntregadores(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        entregador = null;
         this.setLocationRelativeTo(null);
     }
 
@@ -445,7 +454,57 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
+
         if (validarCampos()) {
+            String nome = cxtNome.getText();
+            String cpf = cxtCPF.getText();
+            String dtNasc = cxtData.getText();
+            Date data = null;
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate localDate = LocalDate.parse(dtNasc, formatter);
+                data = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+            } catch (Exception erro) {
+                JOptionPane.showMessageDialog(this, "Data Inválida", "Erro Data", JOptionPane.ERROR_MESSAGE);
+                return;
+                
+            }
+
+            String cep = cxtCEP.getText();
+            String cidade = cxtCidade.getText();
+            String bairro = cxtBairro.getText();
+            String logradouro = cxtRua.getText();
+            String modelo = cxtModelo.getText();
+            String marca = cxtMarca.getText();
+            String tipo = (String) cmbTipo.getSelectedItem();
+            String estadoCivil = "";
+            String ano = spnAno.getValue().toString();
+            int anoFabricacao = Integer.parseInt(ano);
+            String num = cxtN.getText();
+            int numero = Integer.parseInt(num);
+
+            if (rdbSolteiro.isSelected()) {
+                estadoCivil = "Solteiro";
+            } else if (rdbCasado.isSelected()) {
+                estadoCivil = "Casado";
+            } else {
+                estadoCivil = "Divorciado";
+            }
+
+            try {
+                if (entregador == null) {
+                    int id = GerenciadorInterface.getMyInstance().getGerDom().inserirEntregador(new Date(), modelo, marca,
+                            anoFabricacao, tipo, nome, cpf, data, estadoCivil, cep, bairro, cidade,
+                            logradouro, numero);
+                    JOptionPane.showMessageDialog(this, "Entregador" + id + " inserido com sucesso.");
+
+                }
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex, "ERRO Cliente", JOptionPane.ERROR_MESSAGE);
+
+            }
 
         } else {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos", "Erro no Cadastro", JOptionPane.ERROR_MESSAGE);
@@ -474,7 +533,7 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        GerenciadorInterface.getMyInstance().carregarComboCarros(cmbTipo);
+
     }//GEN-LAST:event_formComponentShown
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -492,7 +551,7 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
             if (ender != null) {
                 cxtRua.setText(ender.getLogradouro());
                 cxtBairro.setText(ender.getBairro());
-                cxtCidade.setText(ender.getCidade() + "/" + ender.getUf());
+                cxtCidade.setText(ender.getCidade());;
                 //cmbCidade.setSelectedItem(ender.getCidade());
             } else {
                 JOptionPane.showMessageDialog(this, "CEP não encontrado.", "Cadastro de Cliente", JOptionPane.ERROR_MESSAGE);

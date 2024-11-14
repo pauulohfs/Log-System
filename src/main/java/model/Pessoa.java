@@ -4,6 +4,7 @@
  */
 package model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
@@ -19,6 +20,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +29,7 @@ import java.util.List;
  * @author phfde
  */
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance (strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "tipo_pessoa", discriminatorType = DiscriminatorType.INTEGER)
 public abstract class Pessoa implements Serializable {
 
@@ -44,7 +46,7 @@ public abstract class Pessoa implements Serializable {
     @Column (nullable = false, length = 10)
     private String estadoCivil;
     
-    @ManyToMany
+    @ManyToMany ( cascade = CascadeType.ALL)
     @JoinTable ( name="Pessoa_Endereco", 
            	 joinColumns = { @JoinColumn (name="idPessoa") },
                  inverseJoinColumns = { @JoinColumn(name="idEndereco") }
@@ -52,8 +54,11 @@ public abstract class Pessoa implements Serializable {
     private List<Endereco> endereco;
         
 
-    public Pessoa(String nome, String cpf, Date dtNasc, String estadoCivil) {
+    public Pessoa(String nome, String cpf, Date dtNasc, String estadoCivil,String cep, String bairro, String cidade, String logradouro, int numero) {
         this.nome = nome;
+        Endereco end = new Endereco(cep,bairro,cidade, logradouro, numero);
+        this.endereco = new ArrayList<>();
+        this.endereco.add(end);
         this.cpf = cpf;
         this.dtNasc = dtNasc;
         this.estadoCivil = estadoCivil;

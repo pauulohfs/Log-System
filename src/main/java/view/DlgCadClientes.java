@@ -346,8 +346,6 @@ public class DlgCadClientes extends javax.swing.JDialog {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
 
-        //String nome = "";
-        //String cpf = "";
 
         if (validarCampos()) {
             //nome = cxtNome.getText();
@@ -389,7 +387,7 @@ public class DlgCadClientes extends javax.swing.JDialog {
             if (ender != null) {
                 cxtRua.setText(ender.getLogradouro());
                 cxtBairro.setText(ender.getBairro());
-                cxtCidade.setText(ender.getCidade() + "/" + ender.getUf());
+                cxtCidade.setText(ender.getCidade());
                 //cmbCidade.setSelectedItem(ender.getCidade());
             } else {
                 JOptionPane.showMessageDialog(this, "CEP não encontrado.", "Cadastro de Cliente", JOptionPane.ERROR_MESSAGE);

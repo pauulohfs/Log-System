@@ -20,14 +20,15 @@ import java.util.List;
 @DiscriminatorValue("1")
 public class Cliente extends Pessoa {
 
-    @Column (nullable = false)
+    @Column 
     private String plano;
     
     @OneToMany ( mappedBy = "cliente", fetch = FetchType.LAZY )
     private List<Pacote> pacotes;
 
-    public Cliente(String plano, String nome, String cpf, Date dtNasc, String estadoCivil) {
-        super(nome, cpf, dtNasc, estadoCivil);
+    public Cliente(String plano, String nome, String cpf, Date dtNasc, String estadoCivil,String cep, String bairro, String cidade
+                ,String logradouro, int numero) {
+        super(nome,cpf,dtNasc,estadoCivil,cep, bairro, cidade, logradouro,numero);
         this.plano = plano;
     }
 

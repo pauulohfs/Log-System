@@ -21,11 +21,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.Cliente;
 import org.hibernate.HibernateException;
 import view.DlgBuscarEncomenda;
 import view.DlgCadClientes;
 import view.DlgCadEntregadores;
 import view.DlgEntrada;
+import view.DlgPesqCliente;
 import view.DlgRelatorioEntradas;
 import view.DlgRelatorioEntregas;
 import view.DlgRelatorioSaidas;
@@ -40,15 +42,17 @@ import view.FrmPrincipal;
 public class GerenciadorInterface {
 
     private FrmPrincipal programa = null;
-    private final DlgCadClientes cadCli = null;
-    private final DlgCadEntregadores cadEntregadores = null;
-    private final DlgSaida saidas = null;
-    private final DlgEntrada entradas = null;
-    private final DlgBuscarEncomenda buscarEncomenda = null;
-    private final DlgRelatorioEntregas entregas = null;
-    private final DlgRelatorioEntradas relatorioEntradas = null;
-    private final DlgRelatorioSaidas relatorioSaidas = null;
-    private final DlgStatusSaida status = null;
+    private  DlgCadClientes cadCli = null;
+    private  DlgCadEntregadores cadEntregadores = null;
+    private  DlgSaida saidas = null;
+    private  DlgEntrada entradas = null;
+    private  DlgBuscarEncomenda buscarEncomenda = null;
+    private  DlgRelatorioEntregas entregas = null;
+    private  DlgRelatorioEntradas relatorioEntradas = null;
+    private  DlgRelatorioSaidas relatorioSaidas = null;
+    private  DlgStatusSaida status = null;
+    private  DlgPesqCliente pesqCli = null;
+    
 
     GerenciadorDominio gerDom;
     boolean banco = false;
@@ -118,8 +122,6 @@ public class GerenciadorInterface {
 
     }
 
-
-
     public boolean isBanco() {
         return banco;
     }
@@ -132,6 +134,11 @@ public class GerenciadorInterface {
 
     public void abrirCadastroCliente() {
         abrirJanela(programa, cadCli, DlgCadClientes.class);
+    }
+
+    public Cliente abrirPesqCliente() {
+        pesqCli = (DlgPesqCliente) abrirJanela(programa, pesqCli, DlgPesqCliente.class);
+        return pesqCli.getCliSelecionado();
     }
 
     public void abrirCadastroEntregadores() {
@@ -168,9 +175,17 @@ public class GerenciadorInterface {
     public void abrirStatus() {
         abrirJanela(programa, status, DlgStatusSaida.class);
     }
-
-
-
+    
+        public void carregarCombo( JComboBox combo, Class classe) {
+        
+        try {
+            List lista = gerDom.listar(classe);
+            combo.setModel(  new DefaultComboBoxModel( lista.toArray()  ) ); 
+        } catch (HibernateException ex) {
+            JOptionPane.showMessageDialog(programa, ex, "ERRO ao carregar Combobox.", JOptionPane.ERROR_MESSAGE  );
+        } 
+        
+    }
 
     //private final Dlg config = null;
     public static void main(String args[]) {

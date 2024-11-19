@@ -7,9 +7,6 @@ package model;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.io.Serializable;
@@ -28,6 +25,16 @@ public class HistoricoStatus implements Serializable {
     @Temporal(value = TemporalType.DATE)
     @Column(nullable = false, updatable = false)
     private Date dtModificacao;
+
+    public HistoricoStatus(Pacote pacote, Status status, Date dtModificacao) {
+        this.dtModificacao = dtModificacao;
+        this.chaveComposta = new HistoricoStatusPK(pacote,status);
+    }
+
+    public HistoricoStatus() {
+    }
+    
+    
 
     public HistoricoStatusPK getChaveComposta() {
         return chaveComposta;

@@ -122,6 +122,11 @@ public abstract class Pessoa implements Serializable {
     public void setEndereco(List<Endereco> endereco) {
         this.endereco = endereco;
     }
+
+    @Override
+    public String toString() {
+        return nome ;
+    }
     
 
 }

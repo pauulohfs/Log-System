@@ -478,7 +478,7 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
             String modelo = cxtModelo.getText();
             String marca = cxtMarca.getText();
             String tipo = (String) cmbTipo.getSelectedItem();
-            String estadoCivil = "";
+            String estadoCivil = null;
             String ano = spnAno.getValue().toString();
             int anoFabricacao = Integer.parseInt(ano);
             String num = cxtN.getText();
@@ -497,12 +497,12 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
                     int id = GerenciadorInterface.getMyInstance().getGerDom().inserirEntregador(new Date(), modelo, marca,
                             anoFabricacao, tipo, nome, cpf, data, estadoCivil, cep, bairro, cidade,
                             logradouro, numero);
-                    JOptionPane.showMessageDialog(this, "Entregador" + id + " inserido com sucesso.");
+                            JOptionPane.showMessageDialog(this, "Entregador " + id + " inserido com sucesso.");
 
                 }
 
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex, "ERRO Cliente", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, ex, "ERRO Entregador", JOptionPane.ERROR_MESSAGE);
 
             }
 

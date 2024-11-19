@@ -5,9 +5,15 @@
 package view;
 
 import control.FuncoesUteis;
+import control.GerenciadorInterface;
 import java.awt.Color;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import model.Cliente;
 import model.Endereco;
 
 /**
@@ -19,9 +25,12 @@ public class DlgCadClientes extends javax.swing.JDialog {
     /**
      * Creates new form DlgCadastroClientes
      */
+     private Cliente cliente;
+     
     public DlgCadClientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        cliente = null;
         this.setLocationRelativeTo(null);
     }
 
@@ -50,6 +59,12 @@ public class DlgCadClientes extends javax.swing.JDialog {
         txtCelular = new javax.swing.JLabel();
         cxtCelular = new javax.swing.JFormattedTextField();
         txtEstadoCivil = new javax.swing.JLabel();
+        txtPlano = new javax.swing.JLabel();
+        cxtPlano = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        btnConfirmar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtCEP = new javax.swing.JLabel();
         cxtCEP = new javax.swing.JFormattedTextField();
@@ -61,10 +76,6 @@ public class DlgCadClientes extends javax.swing.JDialog {
         cxtN = new javax.swing.JTextField();
         txtBairro = new javax.swing.JLabel();
         cxtBairro = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        btnConfirmar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setTitle("Cadastro de Clientes");
 
@@ -128,6 +139,8 @@ public class DlgCadClientes extends javax.swing.JDialog {
 
         txtEstadoCivil.setText("Estado Civil");
 
+        txtPlano.setText("Plano");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -135,39 +148,45 @@ public class DlgCadClientes extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtData)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtCelular)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtNome)
-                                .addComponent(txtCPF)))
+                                .addComponent(txtCPF))
+                            .addComponent(txtPlano, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(cxtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                                 .addComponent(cxtData)
                                 .addComponent(cxtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cxtPlano, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cxtCelular, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))))
+                    .addComponent(txtData))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
                         .addComponent(txtEstadoCivil)
-                        .addGap(75, 75, 75))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtNome)
+                        .addComponent(cxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEstadoCivil, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNome)
-                            .addComponent(cxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCPF)
                             .addComponent(cxtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,15 +197,55 @@ public class DlgCadClientes extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCelular)
-                            .addComponent(cxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(txtEstadoCivil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                            .addComponent(cxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPlano)
+                    .addComponent(cxtPlano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
+
+        btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/accept.png"))); // NOI18N
+        btnConfirmar.setText("Confirmar");
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/remove.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(btnConfirmar)
+                .addGap(70, 70, 70)
+                .addComponent(btnCancelar)
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConfirmar)
+                    .addComponent(btnCancelar))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel1.setText("Cadastro de Clientes");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
@@ -272,47 +331,6 @@ public class DlgCadClientes extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/accept.png"))); // NOI18N
-        btnConfirmar.setText("Confirmar");
-        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmarActionPerformed(evt);
-            }
-        });
-
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/remove.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(btnConfirmar)
-                .addGap(70, 70, 70)
-                .addComponent(btnCancelar)
-                .addContainerGap(145, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConfirmar)
-                    .addComponent(btnCancelar))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel1.setText("Cadastro de Clientes");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -321,11 +339,14 @@ public class DlgCadClientes extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(200, 200, 200)
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,9 +357,9 @@ public class DlgCadClientes extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -346,14 +367,56 @@ public class DlgCadClientes extends javax.swing.JDialog {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
 
-
         if (validarCampos()) {
-            //nome = cxtNome.getText();
-            //cpf = cxtCPF.getText();
+            String nome = cxtNome.getText();
+            String cpf = cxtCPF.getText();
+            String dtNasc = cxtData.getText();
+            String plano = cxtPlano.getText();
+            Date data = null;
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate localDate = LocalDate.parse(dtNasc, formatter);
+                data = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+            } catch (Exception erro) {
+                JOptionPane.showMessageDialog(this, "Data Inválida", "Erro Data", JOptionPane.ERROR_MESSAGE);
+                return;
+                
+            }
+
+            String cep = cxtCEP.getText();
+            String cidade = cxtCidade.getText();
+            String bairro = cxtBairro.getText();
+            String logradouro = cxtRua.getText();
+
+            String estadoCivil = null;
+
+            String num = cxtN.getText();
+            int numero = Integer.parseInt(num);
+
+            if (rdbSolteiro.isSelected()) {
+                estadoCivil = "Solteiro";
+            } else if (rdbCasado.isSelected()) {
+                estadoCivil = "Casado";
+            } else {
+                estadoCivil = "Divorciado";
+            }
+
+            try {
+                if (cliente == null) {
+                    int id = GerenciadorInterface.getMyInstance().getGerDom().inserirCliente(plano, nome, cpf, data, estadoCivil, cep, bairro, cidade,
+                            logradouro, numero);
+                            JOptionPane.showMessageDialog(this, "Cliente " + id + " inserido com sucesso.");
+
+                }
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex, "ERRO Cliente", JOptionPane.ERROR_MESSAGE);
+
+            }
 
         } else {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos", "Erro no Cadastro", JOptionPane.ERROR_MESSAGE);
-
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
@@ -412,6 +475,7 @@ public class DlgCadClientes extends javax.swing.JDialog {
         txtRua.setForeground(Color.black);
         txtN.setForeground(Color.black);
         txtEstadoCivil.setForeground(Color.black);
+        txtPlano.setForeground(Color.black);
 
         if (cxtNome.getText().trim().isEmpty()) {
             invalidos++;
@@ -436,6 +500,11 @@ public class DlgCadClientes extends javax.swing.JDialog {
         if (cxtCEP.getValue() == null) {
             invalidos++;
             txtCEP.setForeground(Color.red);
+
+        }
+        if (cxtPlano.getText().isEmpty()) {
+            invalidos++;
+            txtPlano.setForeground(Color.red);
 
         }
         if (cxtBairro.getText().isEmpty()) {
@@ -481,6 +550,7 @@ public class DlgCadClientes extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField cxtData;
     private javax.swing.JTextField cxtN;
     private javax.swing.JTextField cxtNome;
+    private javax.swing.JTextField cxtPlano;
     private javax.swing.JTextField cxtRua;
     private javax.swing.ButtonGroup grpEstadoCivil;
     private javax.swing.JLabel jLabel1;
@@ -500,6 +570,7 @@ public class DlgCadClientes extends javax.swing.JDialog {
     private javax.swing.JLabel txtEstadoCivil;
     private javax.swing.JLabel txtN;
     private javax.swing.JLabel txtNome;
+    private javax.swing.JLabel txtPlano;
     private javax.swing.JLabel txtRua;
     // End of variables declaration//GEN-END:variables
 }

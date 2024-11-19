@@ -42,27 +42,24 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtNome" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txtNome" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtData" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cxtNome" min="-2" pref="360" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cxtData" min="-2" pref="144" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="txtID" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="cxtID" min="-2" pref="56" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <Component id="txtID" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="txtEcommerce" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cxtID" min="-2" pref="56" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtEcommerce" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="cxtEcommerce" min="-2" pref="360" max="-2" attributes="0"/>
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="cxtEcommerce" pref="312" max="32767" attributes="0"/>
+                                  <Component id="cxtNome" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnPesquisar" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -71,7 +68,7 @@
                       <Component id="txtCabecalho" min="-2" pref="106" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -80,31 +77,32 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtCabecalho" min="-2" pref="47" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cxtData" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtData" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtID" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cxtID" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cxtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cxtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="btnPesquisar" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtEcommerce" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cxtEcommerce" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtEcommerce" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" pref="40" max="32767" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                      <EmptySpace pref="48" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="80" max="32767" attributes="0"/>
                       <Component id="btnConfirmar" min="-2" pref="42" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="btnCancelar" min="-2" pref="42" max="-2" attributes="0"/>
@@ -116,16 +114,9 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="txtData">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Data "/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="cxtData">
-    </Component>
     <Component class="javax.swing.JLabel" name="txtNome">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nome Cliente"/>
+        <Property name="text" type="java.lang.String" value="Cliente"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cxtEcommerce">
@@ -154,10 +145,13 @@
     </Component>
     <Component class="javax.swing.JLabel" name="txtEcommerce">
       <Properties>
-        <Property name="text" type="java.lang.String" value="E-commerce"/>
+        <Property name="text" type="java.lang.String" value="Loja"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cxtNome">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="txtCabecalho">
       <Properties>
@@ -176,6 +170,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cxtID">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
@@ -237,7 +234,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
+            <Component class="javax.swing.JTextArea" name="cxtDesc">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -252,5 +249,15 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btnPesquisar">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/imagens/png/16x16/search.png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

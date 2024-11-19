@@ -46,7 +46,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnBuscar" min="-2" pref="106" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="cmbEntregador" max="32767" attributes="0"/>
+                  <Component id="cxtEntregador" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
           </Group>
@@ -89,7 +89,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtEntregador" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbEntregador" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cxtEntregador" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -164,21 +164,6 @@
         <Property name="text" type="java.lang.String" value="Entregador"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cmbEntregador">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JTextField" name="cxtID">
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
@@ -240,6 +225,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Status"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cxtEntregador">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxtEntregadorActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

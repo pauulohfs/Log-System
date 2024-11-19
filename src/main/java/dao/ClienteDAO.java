@@ -4,10 +4,22 @@
  */
 package dao;
 
+import java.util.List;
+import model.Cliente;
+
 /**
  *
  * @author phfde
  */
 public class ClienteDAO extends GenericDAO {
-    
+
+    private List<Cliente> pesquisar(String pesq, int tipo) {
+
+        return this.listar(Cliente.class);
+    }
+
+    public List<Cliente> pesquisarPorNome(String pesq) {
+        return pesquisar(pesq, 1);
+    }
+
 }

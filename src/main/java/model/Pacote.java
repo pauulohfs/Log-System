@@ -4,18 +4,22 @@
  */
 package model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,51 +29,44 @@ import java.util.List;
  */
 @Entity
 public class Pacote implements Serializable {
+
     @Id
-    @GeneratedValue ( strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPacote;
-    @Temporal ( value = TemporalType.DATE) 
-    @Column (updatable = false, nullable = false)
+    @Temporal(value = TemporalType.DATE)
+    @Column(updatable = false, nullable = false)
     private Date dtEntrada;
-    @Temporal ( value = TemporalType.DATE) 
-    @Column ()
+    @Temporal(value = TemporalType.DATE)
+    @Column()
     private Date dtSaida;
-    
+
     private String loja;
-    
+
     private String descricao;
-    
+
     @ManyToOne
-    @JoinColumn ( name = "idEntregador")
+    @JoinColumn(name = "idEntregador")
     private Entregador entregador;
-    
-    @ManyToOne ( fetch = FetchType.EAGER )
-    @JoinColumn ( name = "idCliente")
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idCliente")
     private Cliente cliente;
-    
-    @OneToMany(mappedBy = "chaveComposta.pacote")  
+
+    @OneToMany(mappedBy = "chaveComposta.pacote", cascade = CascadeType.ALL)
     private List<HistoricoStatus> historicoStatus;
-    
 
     public Pacote() {
     }
 
-    public Pacote(int idPacote, Date dtEntrada, Date dtSaida, String loja, String descricao) {
-        this.idPacote = idPacote;
+    public Pacote(Date dtEntrada, String loja, String descricao, Cliente cliente) {
         this.dtEntrada = dtEntrada;
-        this.dtSaida = dtSaida;
         this.loja = loja;
         this.descricao = descricao;
+        this.cliente = cliente;
     }
 
-    public Pacote(Date dtEntrada, Date dtSaida, String loja, String descricao) {
-        this.dtEntrada = dtEntrada;
-        this.dtSaida = dtSaida;
-        this.loja = loja;
-        this.descricao = descricao;
-    }
     
-    
+
 
     public int getIdPacote() {
         return idPacote;
@@ -134,6 +131,5 @@ public class Pacote implements Serializable {
     public void setHistoricoStatus(List<HistoricoStatus> historicoStatus) {
         this.historicoStatus = historicoStatus;
     }
-    
-    
+
 }

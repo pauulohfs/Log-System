@@ -21,8 +21,6 @@ public class DlgStatusSaida extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        cmbEntregador.setSelectedItem(null);
-        cmbEntregador.setEnabled(false);
     }
 
     /**
@@ -42,12 +40,12 @@ public class DlgStatusSaida extends javax.swing.JDialog {
         txtID = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         txtEntregador = new javax.swing.JLabel();
-        cmbEntregador = new javax.swing.JComboBox<>();
         cxtID = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         rdbCaminho = new javax.swing.JRadioButton();
         rdbEntregue = new javax.swing.JRadioButton();
         txtStatus = new javax.swing.JLabel();
+        cxtEntregador = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Relatório de Entregas");
@@ -84,8 +82,6 @@ public class DlgStatusSaida extends javax.swing.JDialog {
 
         txtEntregador.setText("Entregador");
 
-        cmbEntregador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         grpStatus.add(rdbCaminho);
@@ -119,6 +115,13 @@ public class DlgStatusSaida extends javax.swing.JDialog {
 
         txtStatus.setText("Status");
 
+        cxtEntregador.setEditable(false);
+        cxtEntregador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cxtEntregadorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,7 +141,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
                         .addComponent(cxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cmbEntregador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cxtEntregador))
                 .addGap(152, 152, 152))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +174,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEntregador)
-                    .addComponent(cmbEntregador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cxtEntregador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
@@ -195,20 +198,13 @@ public class DlgStatusSaida extends javax.swing.JDialog {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        if (validarEntregador()){
-        
-        
-        }else{
-            JOptionPane.showMessageDialog(this, "Selecione um Entregador ", "Erro na Modificação", JOptionPane.ERROR_MESSAGE);
-        
-        }
+
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         if (validarID()) {
-            cmbEntregador.setEnabled(true);
             rdbCaminho.setEnabled(true);
             rdbEntregue.setEnabled(true);
             rdbCaminho.setSelected(true);
@@ -218,12 +214,14 @@ public class DlgStatusSaida extends javax.swing.JDialog {
             rdbCaminho.setEnabled(false);
             rdbEntregue.setSelected(false);
             rdbEntregue.setEnabled(false);
-            cmbEntregador.setSelectedItem(null);
-            cmbEntregador.setEnabled(false); 
             JOptionPane.showMessageDialog(this, "Digite o ID do pacote ", "Erro na Busca", JOptionPane.ERROR_MESSAGE);
             
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void cxtEntregadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxtEntregadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cxtEntregadorActionPerformed
     
     private boolean validarID() {
         txtID.setForeground(Color.black);
@@ -241,22 +239,8 @@ public class DlgStatusSaida extends javax.swing.JDialog {
             return false;
         }
         
-    }
-        private boolean validarEntregador() {
-        txtEntregador.setForeground(Color.black);
-        //txtDataFim.setForeground(Color.black);
+    
 
-        int invalidos = 0;
-        if (cmbEntregador.getSelectedItem()==null) {
-            txtEntregador.setForeground(Color.red);
-            invalidos++;
-        }
-        
-        if (invalidos == 0) {
-            return true;
-        } else {
-            return false;
-        }
         
     }
     /**
@@ -268,7 +252,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> cmbEntregador;
+    private javax.swing.JTextField cxtEntregador;
     private javax.swing.JTextField cxtID;
     private javax.swing.ButtonGroup grpStatus;
     private javax.swing.JPanel jPanel1;

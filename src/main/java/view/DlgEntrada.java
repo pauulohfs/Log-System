@@ -4,8 +4,11 @@
  */
 package view;
 
+import control.GerenciadorInterface;
 import java.awt.Color;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import model.Cliente;
 
 /**
  *
@@ -13,12 +16,15 @@ import javax.swing.JOptionPane;
  */
 public class DlgEntrada extends javax.swing.JDialog {
 
+    private Cliente cliSelecionado;
+
     /**
      * Creates new form DlgEntradas
      */
     public DlgEntrada(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        cliSelecionado = null;
         this.setLocationRelativeTo(null);
     }
 
@@ -32,8 +38,6 @@ public class DlgEntrada extends javax.swing.JDialog {
     private void initComponents() {
 
         grpSaida = new javax.swing.ButtonGroup();
-        txtData = new javax.swing.JLabel();
-        cxtData = new javax.swing.JTextField();
         txtNome = new javax.swing.JLabel();
         cxtEcommerce = new javax.swing.JTextField();
         btnConfirmar = new javax.swing.JButton();
@@ -46,15 +50,14 @@ public class DlgEntrada extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        cxtDesc = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        btnPesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nova Entrada");
 
-        txtData.setText("Data ");
-
-        txtNome.setText("Nome Cliente");
+        txtNome.setText("Cliente");
 
         btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/accept.png"))); // NOI18N
         btnConfirmar.setText("Confirmar");
@@ -72,7 +75,9 @@ public class DlgEntrada extends javax.swing.JDialog {
             }
         });
 
-        txtEcommerce.setText("E-commerce");
+        txtEcommerce.setText("Loja");
+
+        cxtNome.setEditable(false);
 
         txtCabecalho.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtCabecalho.setForeground(new java.awt.Color(0, 0, 255));
@@ -80,11 +85,13 @@ public class DlgEntrada extends javax.swing.JDialog {
 
         txtID.setText("ID");
 
+        cxtID.setEditable(false);
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Descrição", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 255))); // NOI18N
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        cxtDesc.setColumns(20);
+        cxtDesc.setRows(5);
+        jScrollPane1.setViewportView(cxtDesc);
 
         jLabel1.setText("Descrição do Produto");
 
@@ -119,6 +126,13 @@ public class DlgEntrada extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/search.png"))); // NOI18N
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,54 +149,52 @@ public class DlgEntrada extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNome)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtNome)
-                                    .addComponent(txtData))
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cxtData, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(txtID)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(17, 17, 17)
+                                .addComponent(txtID))
+                            .addComponent(txtEcommerce))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtEcommerce)
-                                .addGap(36, 36, 36)
-                                .addComponent(cxtEcommerce, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cxtEcommerce, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                                    .addComponent(cxtNome))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(199, 199, 199)
                         .addComponent(txtCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cxtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtData)
                     .addComponent(txtID)
                     .addComponent(cxtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNome)
-                    .addComponent(cxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtNome)
+                        .addComponent(cxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEcommerce)
-                    .addComponent(cxtEcommerce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cxtEcommerce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEcommerce))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(18, 40, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(59, Short.MAX_VALUE))
+                        .addContainerGap(48, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                         .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,8 +208,21 @@ public class DlgEntrada extends javax.swing.JDialog {
 
         //String nome = "";
         //String ecommerce = "";
-
         if (validarCampos()) {
+            String loja = cxtEcommerce.getText();
+            String descricao = cxtDesc.getText();
+
+            try {
+
+                int id = GerenciadorInterface.getMyInstance().getGerDom().inserirPacote(new Date(), loja, descricao, cliSelecionado);
+                JOptionPane.showMessageDialog(this, "Pacote inserido com sucesso.");
+                String idStr = String.valueOf(id);
+                cxtID.setText(idStr);
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex, "ERRO Cliente", JOptionPane.ERROR_MESSAGE);
+
+            }
             //nome = cxtNome.getText();
             //ecommerce = cxtEcommerce.getText();
 
@@ -213,8 +238,6 @@ public class DlgEntrada extends javax.swing.JDialog {
         int invalidos = 0;
         txtNome.setForeground(Color.black);
         txtEcommerce.setForeground(Color.black);
-        txtData.setForeground(Color.black);
-        txtID.setForeground(Color.black);
 
         if (cxtNome.getText().isEmpty()) {
             //msgErro = msgErro + "Digite seu nome.\n";
@@ -228,14 +251,6 @@ public class DlgEntrada extends javax.swing.JDialog {
             txtEcommerce.setForeground(Color.red);
 
         }
-        if (cxtData.getText().isEmpty()) {
-            invalidos++;
-            txtData.setForeground(Color.red);
-        }
-        if (cxtID.getText().isEmpty()) {
-            invalidos++;
-            txtID.setForeground(Color.red);
-        }
 
         if (invalidos == 0) {
             return true;
@@ -248,11 +263,21 @@ public class DlgEntrada extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+        cliSelecionado = GerenciadorInterface.getMyInstance().abrirPesqCliente();
+        if (cliSelecionado != null) {
+            cxtNome.setText(cliSelecionado.getNome());
+        }
+
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JTextField cxtData;
+    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JTextArea cxtDesc;
     private javax.swing.JTextField cxtEcommerce;
     private javax.swing.JTextField cxtID;
     private javax.swing.JTextField cxtNome;
@@ -261,9 +286,7 @@ public class DlgEntrada extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel txtCabecalho;
-    private javax.swing.JLabel txtData;
     private javax.swing.JLabel txtEcommerce;
     private javax.swing.JLabel txtID;
     private javax.swing.JLabel txtNome;

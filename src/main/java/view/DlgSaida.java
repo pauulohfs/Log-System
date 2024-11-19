@@ -4,8 +4,10 @@
  */
 package view;
 
+import control.GerenciadorInterface;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import model.Entregador;
 
 /**
  *
@@ -21,6 +23,7 @@ public class DlgSaida extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         cmbEntregador.setSelectedItem(null);
+        
     }
 
     /**
@@ -33,8 +36,6 @@ public class DlgSaida extends javax.swing.JDialog {
     private void initComponents() {
 
         grpSaida = new javax.swing.ButtonGroup();
-        txtData = new javax.swing.JLabel();
-        cxtData = new javax.swing.JTextField();
         txtNome = new javax.swing.JLabel();
         cxtEcommerce = new javax.swing.JTextField();
         btnConfirmar = new javax.swing.JButton();
@@ -53,10 +54,15 @@ public class DlgSaida extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nova Saída");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
-        txtData.setText("Data ");
+        txtNome.setText("Cliente:");
 
-        txtNome.setText("Nome Cliente");
+        cxtEcommerce.setEditable(false);
 
         btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/accept.png"))); // NOI18N
         btnConfirmar.setText("Confirmar");
@@ -74,7 +80,9 @@ public class DlgSaida extends javax.swing.JDialog {
             }
         });
 
-        txtEcommerce.setText("E-commerce");
+        txtEcommerce.setText("Loja");
+
+        cxtNome.setEditable(false);
 
         txtCabecalho.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtCabecalho.setForeground(new java.awt.Color(0, 0, 255));
@@ -154,38 +162,31 @@ public class DlgSaida extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtNome)
-                                        .addComponent(txtData))
-                                    .addGap(31, 31, 31)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(cxtData, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(35, 35, 35)
-                                            .addComponent(txtID)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(cxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(txtEcommerce)
-                                    .addGap(36, 36, 36)
-                                    .addComponent(cxtEcommerce, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(27, 27, 27)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnConfirmar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtNome)
+                                .addComponent(txtID))
+                            .addComponent(txtEcommerce))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cxtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                            .addComponent(cxtEcommerce))
+                        .addGap(75, 75, 75))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(208, 208, 208)
                         .addComponent(txtCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,8 +195,6 @@ public class DlgSaida extends javax.swing.JDialog {
                 .addComponent(txtCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cxtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtData)
                     .addComponent(txtID)
                     .addComponent(cxtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -208,15 +207,15 @@ public class DlgSaida extends javax.swing.JDialog {
                     .addComponent(cxtEcommerce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(18, 18, 18)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(101, 101, 101))
+                        .addGap(113, 113, 113))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(69, Short.MAX_VALUE))))
         );
 
         pack();
@@ -232,7 +231,7 @@ public class DlgSaida extends javax.swing.JDialog {
         if (validarCampos()) {
             nome = cxtNome.getText();
             ecommerce = cxtEcommerce.getText();
-            data = cxtData.getText();
+
 
         } else {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos", "Erro na Saída de Pacote", JOptionPane.ERROR_MESSAGE);
@@ -246,7 +245,6 @@ public class DlgSaida extends javax.swing.JDialog {
         int invalidos = 0;
         txtNome.setForeground(Color.black);
         txtEcommerce.setForeground(Color.black);
-        txtData.setForeground(Color.black);
         txtID.setForeground(Color.black);
         txtEntregador.setForeground(Color.black);
 
@@ -262,10 +260,7 @@ public class DlgSaida extends javax.swing.JDialog {
             txtEcommerce.setForeground(Color.red);
 
         }
-        if (cxtData.getText().isEmpty()) {
-            invalidos++;
-            txtData.setForeground(Color.red);
-        }
+
         if (cxtID.getText().isEmpty()) {
             invalidos++;
             txtID.setForeground(Color.red);
@@ -298,7 +293,6 @@ public class DlgSaida extends javax.swing.JDialog {
         // TODO add your handling code here:
         if (rdbRetirada.isSelected()) {
             cmbEntregador.setEnabled(false);
-            cmbEntregador.setSelectedItem(null);
         } else if (rdbSaida.isSelected()) {
             cmbEntregador.setEnabled(true);
 
@@ -311,12 +305,16 @@ public class DlgSaida extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        GerenciadorInterface.getMyInstance().carregarCombo(cmbEntregador, Entregador.class);
+    }//GEN-LAST:event_formComponentShown
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JComboBox<String> cmbEntregador;
-    private javax.swing.JTextField cxtData;
     private javax.swing.JTextField cxtEcommerce;
     private javax.swing.JTextField cxtID;
     private javax.swing.JTextField cxtNome;
@@ -326,7 +324,6 @@ public class DlgSaida extends javax.swing.JDialog {
     private javax.swing.JRadioButton rdbRetirada;
     private javax.swing.JRadioButton rdbSaida;
     private javax.swing.JLabel txtCabecalho;
-    private javax.swing.JLabel txtData;
     private javax.swing.JLabel txtEcommerce;
     private javax.swing.JLabel txtEntregador;
     private javax.swing.JLabel txtID;

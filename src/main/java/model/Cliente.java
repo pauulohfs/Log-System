@@ -23,7 +23,7 @@ public class Cliente extends Pessoa {
     @Column 
     private String plano;
     
-    @OneToMany ( mappedBy = "cliente", fetch = FetchType.LAZY )
+    @OneToMany ( mappedBy = "cliente", fetch = FetchType.LAZY)
     private List<Pacote> pacotes;
 
     public Cliente(String plano, String nome, String cpf, Date dtNasc, String estadoCivil,String cep, String bairro, String cidade

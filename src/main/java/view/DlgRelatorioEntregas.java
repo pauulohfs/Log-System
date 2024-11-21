@@ -4,8 +4,10 @@
  */
 package view;
 
+import control.GerenciadorInterface;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import model.Entregador;
 
 /**
  *
@@ -44,6 +46,11 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Relatório de Entregas");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         txtEntregador.setText("Selecione o Entregador:");
 
@@ -172,6 +179,11 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Selecione um Entregador", "Erro de Exportação de Relatório", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        GerenciadorInterface.getMyInstance().carregarCombo(cmbEntregador, Entregador.class);
+    }//GEN-LAST:event_formComponentShown
     private boolean validarCampos() {
         txtEntregador.setForeground(Color.black);;
 

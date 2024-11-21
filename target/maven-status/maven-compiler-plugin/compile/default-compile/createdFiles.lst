@@ -3,6 +3,7 @@ view\FrmPrincipal$2.class
 view\DlgRelatorioSaidas$2.class
 control\GerenciadorDominio.class
 view\DlgSaida.class
+view\DlgSaida$6.class
 model\HistoricoStatusPK.class
 dao\EntregadorDAO.class
 view\DlgCadEntregadores$5.class
@@ -13,6 +14,7 @@ view\DlgEntrada$3.class
 view\DlgStatusSaida$4.class
 view\DlgCadEntregadores$4.class
 view\DlgStatusSaida$3.class
+view\DlgRelatorioEntregas$5.class
 view\DlgCadClientes$4.class
 view\DlgEntrada.class
 view\DlgCadClientes$5.class

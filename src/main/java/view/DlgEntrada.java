@@ -80,14 +80,14 @@ public class DlgEntrada extends javax.swing.JDialog {
         cxtNome.setEditable(false);
 
         txtCabecalho.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtCabecalho.setForeground(new java.awt.Color(0, 0, 255));
+        txtCabecalho.setForeground(new java.awt.Color(204, 204, 204));
         txtCabecalho.setText("Nova Entrada");
 
         txtID.setText("ID");
 
         cxtID.setEditable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Descrição", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Descrição", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(204, 204, 204))); // NOI18N
 
         cxtDesc.setColumns(20);
         cxtDesc.setRows(5);

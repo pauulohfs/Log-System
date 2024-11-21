@@ -414,7 +414,7 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Cadastro de Entregadores");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

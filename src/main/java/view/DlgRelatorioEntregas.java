@@ -55,7 +55,7 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
         txtEntregador.setText("Selecione o Entregador:");
 
         txtRelatorioEntregas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtRelatorioEntregas.setForeground(new java.awt.Color(0, 0, 255));
+        txtRelatorioEntregas.setForeground(new java.awt.Color(204, 204, 204));
         txtRelatorioEntregas.setText("Relatório de Entregas");
 
         cmbEntregador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Joao", "Pedro" }));

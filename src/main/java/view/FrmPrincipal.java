@@ -159,7 +159,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         mniRelatorioEntrega = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle(" Receive");
         setResizable(false);
 
         cxtBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +216,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         txtCadastros.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtCadastros.setForeground(new java.awt.Color(0, 0, 255));
+        txtCadastros.setForeground(new java.awt.Color(204, 204, 204));
         txtCadastros.setText("Cadastros ");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -276,15 +275,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         txtEntradaSaida.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtEntradaSaida.setForeground(new java.awt.Color(0, 0, 255));
+        txtEntradaSaida.setForeground(new java.awt.Color(204, 204, 204));
         txtEntradaSaida.setText("Entrada/Saída");
 
         txtBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtBuscar.setForeground(new java.awt.Color(0, 0, 255));
+        txtBuscar.setForeground(new java.awt.Color(204, 204, 204));
         txtBuscar.setText("Buscar");
 
         txtRelatorio.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        txtRelatorio.setForeground(new java.awt.Color(0, 0, 255));
+        txtRelatorio.setForeground(new java.awt.Color(204, 204, 204));
         txtRelatorio.setText("Relatórios");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -470,21 +469,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(291, 291, 291)
-                        .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(345, 345, 345)
                         .addComponent(txtBuscar)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(291, 291, 291)
+                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
+                        .addContainerGap()
+                        .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
                         .addComponent(txtBuscar)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -504,7 +504,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
+                        .addGap(274, 274, 274)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

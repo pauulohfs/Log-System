@@ -49,7 +49,7 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
         txtDataFim.setText("Data Fim");
 
         txtRelatorioEntradas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtRelatorioEntradas.setForeground(new java.awt.Color(0, 0, 255));
+        txtRelatorioEntradas.setForeground(new java.awt.Color(204, 204, 204));
         txtRelatorioEntradas.setText("Relatório de Saídas");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

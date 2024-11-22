@@ -4,6 +4,7 @@
  */
 package model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import java.io.Serializable;
@@ -14,11 +15,11 @@ import java.io.Serializable;
  */
 public class HistoricoStatusPK implements Serializable {
 
-    @ManyToOne
+    @ManyToOne 
     @JoinColumn(name = "idPacote")
     private Pacote pacote;
 
-    @ManyToOne
+    @ManyToOne 
     @JoinColumn(name = "idStatus")
     private Status status;
 

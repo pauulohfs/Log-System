@@ -225,7 +225,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
     }//GEN-LAST:event_cxtEntregadorActionPerformed
     
     private boolean validarID() {
-        txtID.setForeground(Color.black);
+        txtID.setForeground(Color.lightGray);
         //txtDataFim.setForeground(Color.black);
 
         int invalidos = 0;

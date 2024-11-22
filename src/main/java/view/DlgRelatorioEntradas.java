@@ -195,8 +195,8 @@ public class DlgRelatorioEntradas extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private boolean validarCampos() {
-        txtDataInicio.setForeground(Color.black);
-        txtDataFim.setForeground(Color.black);
+        txtDataInicio.setForeground(Color.lightGray);
+        txtDataFim.setForeground(Color.lightGray);
 
         int invalidos = 0;
         if (cxtDataInicio.getValue() == null) {

@@ -465,17 +465,17 @@ public class DlgCadClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_cxtCEPFocusLost
     private boolean validarCampos() {
         int invalidos = 0;
-        txtNome.setForeground(Color.black);
-        txtData.setForeground(Color.black);
-        txtCPF.setForeground(Color.black);
-        txtCelular.setForeground(Color.black);
-        txtCEP.setForeground(Color.black);
-        txtBairro.setForeground(Color.black);
-        txtCidade.setForeground(Color.black);
-        txtRua.setForeground(Color.black);
-        txtN.setForeground(Color.black);
-        txtEstadoCivil.setForeground(Color.black);
-        txtPlano.setForeground(Color.black);
+        txtNome.setForeground(Color.lightGray);
+        txtData.setForeground(Color.lightGray);
+        txtCPF.setForeground(Color.lightGray);
+        txtCelular.setForeground(Color.lightGray);
+        txtCEP.setForeground(Color.lightGray);
+        txtBairro.setForeground(Color.lightGray);
+        txtCidade.setForeground(Color.lightGray);
+        txtRua.setForeground(Color.lightGray);
+        txtN.setForeground(Color.lightGray);
+        txtEstadoCivil.setForeground(Color.lightGray);
+        txtPlano.setForeground(Color.lightGray);
 
         if (cxtNome.getText().trim().isEmpty()) {
             invalidos++;

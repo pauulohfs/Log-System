@@ -253,10 +253,10 @@ public class DlgSaida extends javax.swing.JDialog {
     private boolean validarCampos() {
         //String msgErro = "";
         int invalidos = 0;
-        txtNome.setForeground(Color.black);
-        txtEcommerce.setForeground(Color.black);
-        txtID.setForeground(Color.black);
-        txtEntregador.setForeground(Color.black);
+        txtNome.setForeground(Color.lightGray);
+        txtEcommerce.setForeground(Color.lightGray);
+        txtID.setForeground(Color.lightGray);
+        txtEntregador.setForeground(Color.lightGray);
 
         if (cxtNome.getText().isEmpty()) {
             //msgErro = msgErro + "Digite seu nome.\n";

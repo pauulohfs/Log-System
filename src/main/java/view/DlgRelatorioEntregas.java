@@ -21,7 +21,6 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
     public DlgRelatorioEntregas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        cmbEntregador.setSelectedItem(null);
         this.setLocationRelativeTo(null);
     }
 
@@ -52,6 +51,7 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
             }
         });
 
+        txtEntregador.setForeground(new java.awt.Color(204, 204, 204));
         txtEntregador.setText("Selecione o Entregador:");
 
         txtRelatorioEntregas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -183,9 +183,10 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         GerenciadorInterface.getMyInstance().carregarCombo(cmbEntregador, Entregador.class);
+        cmbEntregador.setSelectedItem(null);
     }//GEN-LAST:event_formComponentShown
     private boolean validarCampos() {
-        txtEntregador.setForeground(Color.black);;
+        txtEntregador.setForeground(Color.lightGray);
 
         int invalidos = 0;
         if (cmbEntregador.getSelectedItem() == null) {

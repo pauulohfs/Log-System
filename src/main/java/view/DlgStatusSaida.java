@@ -49,7 +49,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
         cxtEntregador = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Relatório de Entregas");
+        setTitle("Modificar Status de Pacote");
 
         txtStatusEntrega.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtStatusEntrega.setForeground(new java.awt.Color(204, 204, 204));

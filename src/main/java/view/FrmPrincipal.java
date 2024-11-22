@@ -169,7 +169,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         txtNome.setText("Nome");
 
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/database_search.png"))); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/lupa.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -178,7 +178,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnEntregador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/user_add.png"))); // NOI18N
+        btnEntregador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/do-utilizador (1).png"))); // NOI18N
         btnEntregador.setText("Cadastrar Entregador");
         btnEntregador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,8 +186,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/user_add.png"))); // NOI18N
-        btnCliente.setText(" Cadastrar Cliente");
+        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/do-utilizador (1).png"))); // NOI18N
+        btnCliente.setText(" Cadastro de Cliente");
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuCadClienteActionPerformed(evt);
@@ -199,11 +199,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnEntregador, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                    .addComponent(btnCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
-                .addGap(14, 14, 14))
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnEntregador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +221,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnSaida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/down.png"))); // NOI18N
+        btnSaida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/saida (1).png"))); // NOI18N
         btnSaida.setText("   Nova Saída");
         btnSaida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +229,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnEntrada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/up.png"))); // NOI18N
+        btnEntrada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/caixa-de-entrada (1).png"))); // NOI18N
         btnEntrada.setText("Nova Entrada");
         btnEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,7 +237,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/info.png"))); // NOI18N
+        btnStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/info (1).png"))); // NOI18N
         btnStatus.setText("Status Entrega");
         btnStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,7 +250,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,7 +260,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnEntrada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,7 +288,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnRelatorioSaida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/database_down.png"))); // NOI18N
+        btnRelatorioSaida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/relatorio (1).png"))); // NOI18N
         btnRelatorioSaida.setText("Relatório de  Saídas");
         btnRelatorioSaida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,15 +296,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnRelatorioEntrega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/home_next.png"))); // NOI18N
-        btnRelatorioEntrega.setText("Relatório de Entregas");
+        btnRelatorioEntrega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/relatorio (1).png"))); // NOI18N
+        btnRelatorioEntrega.setText("Relatório Entregas");
         btnRelatorioEntrega.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRelatorioEntregaActionPerformed(evt);
             }
         });
 
-        btnRelatorioEntrada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/database_up.png"))); // NOI18N
+        btnRelatorioEntrada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/24x24/relatorio (1).png"))); // NOI18N
         btnRelatorioEntrada.setText("Relatório Entradas");
         btnRelatorioEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,12 +317,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnRelatorioSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRelatorioEntrega, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                    .addComponent(btnRelatorioEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnRelatorioEntrada, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRelatorioEntrega, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRelatorioSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +343,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         txtBD.setText("Banco de Dados");
 
         txtVersao.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        txtVersao.setText("Versão: 0.1 Beta");
+        txtVersao.setText("Versão: 0.1.3 Beta");
 
         mnuCadastrar.setText("Cadastrar");
 
@@ -452,11 +452,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtDev)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
                                 .addComponent(txtBD))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
+                                .addGap(18, 18, 18)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
@@ -508,8 +508,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDev)
-                    .addComponent(txtBD)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtDev)
+                        .addComponent(txtBD))
                     .addComponent(txtVersao))
                 .addContainerGap(7, Short.MAX_VALUE))
         );

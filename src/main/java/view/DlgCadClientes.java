@@ -6,12 +6,15 @@ package view;
 
 import control.FuncoesUteis;
 import control.GerenciadorInterface;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Endereco;
@@ -31,6 +34,15 @@ public class DlgCadClientes extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         cliente = null;
+        ImageIcon logoIcon = new ImageIcon("cadcli.png");
+
+        // Cria um JLabel para armazenar a imagem
+        JLabel logoLabel = new JLabel(logoIcon);
+        logoLabel.setHorizontalAlignment(JLabel.CENTER); // Centraliza a imagem
+
+        // Se você quiser adicionar a imagem a um JPanel já existente no formulário (por exemplo, jPanelLogo)
+        txtLogo.setLayout(new BorderLayout()); // Certifique-se de usar o layout correto
+        txtLogo.add(logoLabel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
     }
 
@@ -64,7 +76,7 @@ public class DlgCadClientes extends javax.swing.JDialog {
         jPanel3 = new javax.swing.JPanel();
         btnConfirmar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        txtLogo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtCEP = new javax.swing.JLabel();
         cxtCEP = new javax.swing.JFormattedTextField();
@@ -243,9 +255,8 @@ public class DlgCadClientes extends javax.swing.JDialog {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("Cadastro de Clientes");
+        txtLogo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtLogo.setForeground(new java.awt.Color(204, 204, 204));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
@@ -339,27 +350,27 @@ public class DlgCadClientes extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -553,7 +564,6 @@ public class DlgCadClientes extends javax.swing.JDialog {
     private javax.swing.JTextField cxtPlano;
     private javax.swing.JTextField cxtRua;
     private javax.swing.ButtonGroup grpEstadoCivil;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -568,6 +578,7 @@ public class DlgCadClientes extends javax.swing.JDialog {
     private javax.swing.JLabel txtCidade;
     private javax.swing.JLabel txtData;
     private javax.swing.JLabel txtEstadoCivil;
+    private javax.swing.JLabel txtLogo;
     private javax.swing.JLabel txtN;
     private javax.swing.JLabel txtNome;
     private javax.swing.JLabel txtPlano;

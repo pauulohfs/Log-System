@@ -6,6 +6,7 @@ package view;
 
 import control.FuncoesUteis;
 import control.GerenciadorInterface;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -13,6 +14,8 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import model.Endereco;
 import model.Entregador;
@@ -32,6 +35,15 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         entregador = null;
+                ImageIcon logoIcon = new ImageIcon("cadentregador.png");
+
+        // Cria um JLabel para armazenar a imagem
+        JLabel logoLabel = new JLabel(logoIcon);
+        logoLabel.setHorizontalAlignment(JLabel.CENTER); // Centraliza a imagem
+
+        // Se você quiser adicionar a imagem a um JPanel já existente no formulário (por exemplo, jPanelLogo)
+        txtLogo.setLayout(new BorderLayout()); // Certifique-se de usar o layout correto
+        txtLogo.add(logoLabel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
     }
 
@@ -86,7 +98,7 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
         spnAno = new javax.swing.JSpinner();
         cxtModelo = new javax.swing.JTextField();
         cxtMarca = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        txtLogo = new javax.swing.JLabel();
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.PAGE_AXIS));
@@ -413,9 +425,8 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("Cadastro de Entregadores");
+        txtLogo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtLogo.setForeground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -429,16 +440,16 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(189, 189, 189)
-                .addComponent(jLabel1)
+                .addGap(181, 181, 181)
+                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -446,7 +457,7 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -666,7 +677,6 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
     private javax.swing.JTextField cxtNome;
     private javax.swing.JTextField cxtRua;
     private javax.swing.ButtonGroup grpEstadoCivil;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -688,6 +698,7 @@ public class DlgCadEntregadores extends javax.swing.JDialog {
     private javax.swing.JLabel txtCidade;
     private javax.swing.JLabel txtData;
     private javax.swing.JLabel txtEstado;
+    private javax.swing.JLabel txtLogo;
     private javax.swing.JLabel txtMarca;
     private javax.swing.JLabel txtModelo;
     private javax.swing.JLabel txtN;

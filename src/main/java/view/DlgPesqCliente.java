@@ -180,7 +180,7 @@ public class DlgPesqCliente extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

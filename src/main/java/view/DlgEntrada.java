@@ -265,6 +265,7 @@ public class DlgEntrada extends javax.swing.JDialog {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // TODO add your handling code here:
+ 
         cliSelecionado = GerenciadorInterface.getMyInstance().abrirPesqCliente();
         if (cliSelecionado != null) {
             cxtNome.setText(cliSelecionado.getNome());

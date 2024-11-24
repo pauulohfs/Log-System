@@ -143,6 +143,7 @@ public class GerenciadorInterface {
     public Cliente abrirPesqCliente() {
         pesqCli = (DlgPesqCliente) abrirJanela(programa, pesqCli, DlgPesqCliente.class);
         return pesqCli.getCliSelecionado();
+        
     }
 
     public void abrirCadastroEntregadores() {
@@ -175,6 +176,7 @@ public class GerenciadorInterface {
     public void abrirRelatorioSaidas() {
         abrirJanela(programa, relatorioSaidas, DlgRelatorioSaidas.class);
     }
+
 
     public void abrirStatus() {
         abrirJanela(programa, status, DlgStatusSaida.class);

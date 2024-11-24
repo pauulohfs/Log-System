@@ -212,7 +212,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(83, Short.MAX_VALUE))
         );
 
-        txtCadastros.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtCadastros.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtCadastros.setForeground(new java.awt.Color(204, 204, 204));
         txtCadastros.setText("Cadastros ");
 
@@ -271,7 +271,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        txtEntradaSaida.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtEntradaSaida.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtEntradaSaida.setForeground(new java.awt.Color(204, 204, 204));
         txtEntradaSaida.setText("Entrada/Saída");
 
@@ -279,7 +279,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         txtBuscar.setForeground(new java.awt.Color(204, 204, 204));
         txtBuscar.setText("Buscar");
 
-        txtRelatorio.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        txtRelatorio.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         txtRelatorio.setForeground(new java.awt.Color(204, 204, 204));
         txtRelatorio.setText("Relatórios");
 
@@ -428,13 +428,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addGap(95, 95, 95)
                 .addComponent(txtCadastros)
-                .addGap(127, 127, 127)
-                .addComponent(txtEntradaSaida)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtEntradaSaida)
+                .addGap(147, 147, 147)
                 .addComponent(txtRelatorio)
-                .addGap(86, 86, 86))
+                .addGap(94, 94, 94))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -483,7 +483,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(cxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRelatorio)
                     .addComponent(txtEntradaSaida)
@@ -501,7 +501,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 .addComponent(txtBD))
                             .addComponent(txtVersao)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();

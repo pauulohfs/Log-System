@@ -5,7 +5,10 @@
 package view;
 
 import control.GerenciadorInterface;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import model.Entregador;
 
@@ -21,6 +24,15 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
     public DlgRelatorioEntregas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ImageIcon logoIcon = new ImageIcon("relatorioEntregas.png");
+
+        // Cria um JLabel para armazenar a imagem
+        JLabel logoLabel = new JLabel(logoIcon);
+        logoLabel.setHorizontalAlignment(JLabel.CENTER); // Centraliza a imagem
+
+        // Se você quiser adicionar a imagem a um JPanel já existente no formulário (por exemplo, jPanelLogo)
+        txtLogo.setLayout(new BorderLayout()); // Certifique-se de usar o layout correto
+        txtLogo.add(logoLabel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
     }
 
@@ -34,7 +46,7 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
     private void initComponents() {
 
         txtEntregador = new javax.swing.JLabel();
-        txtRelatorioEntregas = new javax.swing.JLabel();
+        txtLogo = new javax.swing.JLabel();
         cmbEntregador = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         btnBuscar = new javax.swing.JButton();
@@ -54,9 +66,8 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
         txtEntregador.setForeground(new java.awt.Color(204, 204, 204));
         txtEntregador.setText("Selecione o Entregador:");
 
-        txtRelatorioEntregas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtRelatorioEntregas.setForeground(new java.awt.Color(204, 204, 204));
-        txtRelatorioEntregas.setText("Relatório de Entregas");
+        txtLogo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtLogo.setForeground(new java.awt.Color(204, 204, 204));
 
         cmbEntregador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Joao", "Pedro" }));
 
@@ -109,7 +120,7 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+                    .addComponent(jSeparator1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtEntregador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -132,16 +143,16 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
                         .addGap(212, 212, 212)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(txtRelatorioEntregas)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(117, 117, 117)
+                        .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(txtRelatorioEntregas)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEntregador)
                     .addComponent(cmbEntregador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -155,7 +166,7 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnExportar))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -215,6 +226,6 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel txtEntregador;
-    private javax.swing.JLabel txtRelatorioEntregas;
+    private javax.swing.JLabel txtLogo;
     // End of variables declaration//GEN-END:variables
 }

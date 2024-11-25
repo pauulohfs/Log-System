@@ -4,8 +4,11 @@
  */
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.ButtonModel;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,9 +23,17 @@ public class DlgStatusSaida extends javax.swing.JDialog {
     public DlgStatusSaida(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ImageIcon logoIcon = new ImageIcon("statusEntrega.png");
+
+        // Cria um JLabel para armazenar a imagem
+        JLabel logoLabel = new JLabel(logoIcon);
+        logoLabel.setHorizontalAlignment(JLabel.CENTER); // Centraliza a imagem
+
+        // Se você quiser adicionar a imagem a um JPanel já existente no formulário (por exemplo, jPanelLogo)
+        txtLogo.setLayout(new BorderLayout()); // Certifique-se de usar o layout correto
+        txtLogo.add(logoLabel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,7 +45,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
     private void initComponents() {
 
         grpStatus = new javax.swing.ButtonGroup();
-        txtStatusEntrega = new javax.swing.JLabel();
+        txtLogo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnCancelar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
@@ -51,9 +62,8 @@ public class DlgStatusSaida extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Modificar Status de Pacote");
 
-        txtStatusEntrega.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtStatusEntrega.setForeground(new java.awt.Color(204, 204, 204));
-        txtStatusEntrega.setText("Mudar Status de Entrega");
+        txtLogo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtLogo.setForeground(new java.awt.Color(204, 204, 204));
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/remove.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -129,9 +139,9 @@ public class DlgStatusSaida extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+                .addComponent(jSeparator1)
                 .addGap(25, 25, 25))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEntregador)
@@ -140,34 +150,34 @@ public class DlgStatusSaida extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(cxtEntregador))
                 .addGap(152, 152, 152))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(txtStatusEntrega))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(244, 244, 244)
-                        .addComponent(txtStatus))
+                        .addGap(109, 109, 109)
+                        .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(153, 153, 153)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(235, 235, 235)
+                        .addComponent(txtStatus))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addGap(61, 61, 61)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(txtStatusEntrega)
-                .addGap(25, 25, 25)
+                .addContainerGap()
+                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtID)
                     .addComponent(cxtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,13 +190,17 @@ public class DlgStatusSaida extends javax.swing.JDialog {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(txtStatus)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnCancelar))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(72, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCancelar)
+                            .addComponent(btnSalvar))
+                        .addGap(18, 18, 18))))
         );
 
         pack();
@@ -200,7 +214,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
 
-        
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -209,21 +223,21 @@ public class DlgStatusSaida extends javax.swing.JDialog {
             rdbCaminho.setEnabled(true);
             rdbEntregue.setEnabled(true);
             rdbCaminho.setSelected(true);
-            
+
         } else {
             rdbCaminho.setSelected(false);
             rdbCaminho.setEnabled(false);
             rdbEntregue.setSelected(false);
             rdbEntregue.setEnabled(false);
             JOptionPane.showMessageDialog(this, "Digite o ID do pacote ", "Erro na Busca", JOptionPane.ERROR_MESSAGE);
-            
+
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void cxtEntregadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxtEntregadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cxtEntregadorActionPerformed
-    
+
     private boolean validarID() {
         txtID.setForeground(Color.lightGray);
         //txtDataFim.setForeground(Color.black);
@@ -233,16 +247,13 @@ public class DlgStatusSaida extends javax.swing.JDialog {
             txtID.setForeground(Color.red);
             invalidos++;
         }
-        
+
         if (invalidos == 0) {
             return true;
         } else {
             return false;
         }
-        
-    
 
-        
     }
     /**
      * @param args the command line arguments
@@ -262,7 +273,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
     private javax.swing.JRadioButton rdbEntregue;
     private javax.swing.JLabel txtEntregador;
     private javax.swing.JLabel txtID;
+    private javax.swing.JLabel txtLogo;
     private javax.swing.JLabel txtStatus;
-    private javax.swing.JLabel txtStatusEntrega;
     // End of variables declaration//GEN-END:variables
 }

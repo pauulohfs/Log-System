@@ -5,8 +5,11 @@
 package view;
 
 import control.GerenciadorInterface;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import model.Cliente;
 
@@ -24,6 +27,15 @@ public class DlgEntrada extends javax.swing.JDialog {
     public DlgEntrada(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ImageIcon logoIcon = new ImageIcon("entrada.png");
+
+        // Cria um JLabel para armazenar a imagem
+        JLabel logoLabel = new JLabel(logoIcon);
+        logoLabel.setHorizontalAlignment(JLabel.CENTER); // Centraliza a imagem
+
+        // Se você quiser adicionar a imagem a um JPanel já existente no formulário (por exemplo, jPanelLogo)
+        txtLogo.setLayout(new BorderLayout()); // Certifique-se de usar o layout correto
+        txtLogo.add(logoLabel, BorderLayout.CENTER);
         cliSelecionado = null;
         this.setLocationRelativeTo(null);
     }
@@ -44,7 +56,7 @@ public class DlgEntrada extends javax.swing.JDialog {
         btnCancelar = new javax.swing.JButton();
         txtEcommerce = new javax.swing.JLabel();
         cxtNome = new javax.swing.JTextField();
-        txtCabecalho = new javax.swing.JLabel();
+        txtLogo = new javax.swing.JLabel();
         txtID = new javax.swing.JLabel();
         cxtID = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -79,9 +91,8 @@ public class DlgEntrada extends javax.swing.JDialog {
 
         cxtNome.setEditable(false);
 
-        txtCabecalho.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtCabecalho.setForeground(new java.awt.Color(204, 204, 204));
-        txtCabecalho.setText("Nova Entrada");
+        txtLogo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtLogo.setForeground(new java.awt.Color(204, 204, 204));
 
         txtID.setText("ID");
 
@@ -165,16 +176,16 @@ public class DlgEntrada extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addComponent(txtCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(155, 155, 155)
+                        .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtID)
                     .addComponent(cxtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -265,7 +276,7 @@ public class DlgEntrada extends javax.swing.JDialog {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // TODO add your handling code here:
- 
+
         cliSelecionado = GerenciadorInterface.getMyInstance().abrirPesqCliente();
         if (cliSelecionado != null) {
             cxtNome.setText(cliSelecionado.getNome());
@@ -287,9 +298,9 @@ public class DlgEntrada extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel txtCabecalho;
     private javax.swing.JLabel txtEcommerce;
     private javax.swing.JLabel txtID;
+    private javax.swing.JLabel txtLogo;
     private javax.swing.JLabel txtNome;
     // End of variables declaration//GEN-END:variables
 }

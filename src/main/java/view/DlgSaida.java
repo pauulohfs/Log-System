@@ -5,7 +5,10 @@
 package view;
 
 import control.GerenciadorInterface;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import model.Entregador;
 
@@ -21,9 +24,18 @@ public class DlgSaida extends javax.swing.JDialog {
     public DlgSaida(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ImageIcon logoIcon = new ImageIcon("saida.png");
+
+        // Cria um JLabel para armazenar a imagem
+        JLabel logoLabel = new JLabel(logoIcon);
+        logoLabel.setHorizontalAlignment(JLabel.CENTER); // Centraliza a imagem
+
+        // Se você quiser adicionar a imagem a um JPanel já existente no formulário (por exemplo, jPanelLogo)
+        txtLogo.setLayout(new BorderLayout()); // Certifique-se de usar o layout correto
+        txtLogo.add(logoLabel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
         cmbEntregador.setSelectedItem(null);
-        
+
     }
 
     /**
@@ -42,7 +54,7 @@ public class DlgSaida extends javax.swing.JDialog {
         btnCancelar = new javax.swing.JButton();
         txtEcommerce = new javax.swing.JLabel();
         cxtNome = new javax.swing.JTextField();
-        txtCabecalho = new javax.swing.JLabel();
+        txtLogo = new javax.swing.JLabel();
         txtID = new javax.swing.JLabel();
         cxtID = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -85,9 +97,8 @@ public class DlgSaida extends javax.swing.JDialog {
 
         cxtNome.setEditable(false);
 
-        txtCabecalho.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtCabecalho.setForeground(new java.awt.Color(204, 204, 204));
-        txtCabecalho.setText("Nova Saída");
+        txtLogo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtLogo.setForeground(new java.awt.Color(204, 204, 204));
 
         txtID.setText("ID");
 
@@ -168,25 +179,6 @@ public class DlgSaida extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtNome)
-                        .addComponent(txtID))
-                    .addComponent(txtEcommerce))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(cxtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                        .addComponent(cxtEcommerce)))
-                .addContainerGap(133, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -195,13 +187,35 @@ public class DlgSaida extends javax.swing.JDialog {
                     .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtNome)
+                                .addComponent(txtID))
+                            .addComponent(txtEcommerce))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)
+                                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cxtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                                .addComponent(cxtEcommerce))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnPesquisar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -242,7 +256,6 @@ public class DlgSaida extends javax.swing.JDialog {
             nome = cxtNome.getText();
             ecommerce = cxtEcommerce.getText();
 
-
         } else {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos", "Erro na Saída de Pacote", JOptionPane.ERROR_MESSAGE);
 
@@ -275,12 +288,12 @@ public class DlgSaida extends javax.swing.JDialog {
             invalidos++;
             txtID.setForeground(Color.red);
         }
-        if(rdbSaida.isSelected()){
-          if(cmbEntregador.getSelectedItem() == null){
-               invalidos++;
-               txtEntregador.setForeground(Color.red);
-          
-          }
+        if (rdbSaida.isSelected()) {
+            if (cmbEntregador.getSelectedItem() == null) {
+                invalidos++;
+                txtEntregador.setForeground(Color.red);
+
+            }
         }
 
         if (invalidos == 0) {
@@ -338,10 +351,10 @@ public class DlgSaida extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JRadioButton rdbRetirada;
     private javax.swing.JRadioButton rdbSaida;
-    private javax.swing.JLabel txtCabecalho;
     private javax.swing.JLabel txtEcommerce;
     private javax.swing.JLabel txtEntregador;
     private javax.swing.JLabel txtID;
+    private javax.swing.JLabel txtLogo;
     private javax.swing.JLabel txtNome;
     // End of variables declaration//GEN-END:variables
 }

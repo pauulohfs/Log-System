@@ -4,7 +4,10 @@
  */
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +22,16 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
     public DlgRelatorioSaidas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ImageIcon logoIcon = new ImageIcon("relatorioSaidas.png");
+
+        // Cria um JLabel para armazenar a imagem
+        JLabel logoLabel = new JLabel(logoIcon);
+        logoLabel.setHorizontalAlignment(JLabel.CENTER); // Centraliza a imagem
+
+        // Se você quiser adicionar a imagem a um JPanel já existente no formulário (por exemplo, jPanelLogo)
+        txtLogo.setLayout(new BorderLayout()); // Certifique-se de usar o layout correto
+        txtLogo.add(logoLabel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(null);
     }
 
@@ -32,7 +45,7 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
     private void initComponents() {
 
         txtDataFim = new javax.swing.JLabel();
-        txtRelatorioEntradas = new javax.swing.JLabel();
+        txtLogo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -48,9 +61,8 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
 
         txtDataFim.setText("Data Fim");
 
-        txtRelatorioEntradas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtRelatorioEntradas.setForeground(new java.awt.Color(204, 204, 204));
-        txtRelatorioEntradas.setText("Relatório de Saídas");
+        txtLogo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtLogo.setForeground(new java.awt.Color(204, 204, 204));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,10 +128,6 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
                 .addGap(24, 24, 24)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
                 .addGap(25, 25, 25))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(189, 189, 189)
-                .addComponent(txtRelatorioEntradas)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,13 +150,16 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
                         .addGap(45, 45, 45)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(136, 136, 136))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(txtRelatorioEntradas)
-                .addGap(28, 28, 28)
+                .addContainerGap()
+                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -169,7 +180,7 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnExportar))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -231,6 +242,6 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel txtDataFim;
     private javax.swing.JLabel txtDataInicio;
-    private javax.swing.JLabel txtRelatorioEntradas;
+    private javax.swing.JLabel txtLogo;
     // End of variables declaration//GEN-END:variables
 }

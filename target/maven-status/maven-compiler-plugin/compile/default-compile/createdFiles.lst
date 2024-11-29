@@ -45,6 +45,7 @@ view\DlgRelatorioEntradas$3.class
 view\FrmPrincipal$12.class
 view\DlgSaida$4.class
 view\DlgCadEntregadores$2.class
+dao\PacoteDAO.class
 dao\ConexaoHibernate.class
 view\DlgRelatorioEntregas$3.class
 view\DlgStatusSaida$1.class
@@ -88,3 +89,4 @@ view\DlgPesqCliente$2.class
 control\FuncoesUteis.class
 view\DlgSaida$1.class
 view\DlgSaida$2.class
+control\PacoteAbstractTableModel.class

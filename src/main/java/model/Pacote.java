@@ -7,14 +7,14 @@ package model;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityManager;
+
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NoResultException;
+
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -52,7 +52,7 @@ public class Pacote implements Serializable {
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "chaveComposta.pacote", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chaveComposta.pacote", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<HistoricoStatus> historicoStatus;
 
     public Pacote() {
@@ -63,10 +63,11 @@ public class Pacote implements Serializable {
         this.loja = loja;
         this.descricao = descricao;
         this.cliente = cliente;
+        HistoricoStatus historico = new HistoricoStatus(this,new Status(1,"chegou a cidade"),new Date());//alterar a tabela status do banco colocar em ordem
+        this.historicoStatus = new ArrayList<>();     
+        this.historicoStatus.add(historico);
+        
     }
-
-    
-
 
     public int getIdPacote() {
         return idPacote;

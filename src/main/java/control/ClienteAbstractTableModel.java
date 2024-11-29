@@ -14,11 +14,11 @@ import model.Cliente;
 public class ClienteAbstractTableModel extends AbstractTableModel {
 
     // Lista de OBJETOS
-    private List<Cliente> listaItens = new ArrayList();
+    private List<Cliente> listaClientes = new ArrayList();
 
     @Override
     public int getRowCount() {
-        return listaItens.size();
+        return listaClientes.size();
     }
 
     @Override
@@ -37,7 +37,7 @@ public class ClienteAbstractTableModel extends AbstractTableModel {
     
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Cliente item = listaItens.get(rowIndex);
+        Cliente item = listaClientes.get(rowIndex);
         
         switch (columnIndex) {
             case 0: return item.getNome();
@@ -48,30 +48,30 @@ public class ClienteAbstractTableModel extends AbstractTableModel {
     }
     
     public void adicionar (Cliente item) {
-        listaItens.add(item);
-        fireTableRowsInserted( listaItens.size() - 1, listaItens.size() - 1 );        
+        listaClientes.add(item);
+        fireTableRowsInserted(listaClientes.size() - 1, listaClientes.size() - 1 );        
     }
     
     public void remover (int indice) {        
-        listaItens.remove(indice);
+        listaClientes.remove(indice);
         fireTableRowsDeleted( indice, indice );
         
     }
 
     public Cliente getCliente(int linha) {
-        return listaItens.get(linha);
+        return listaClientes.get(linha);
     }
     
     public void setLista(List<Cliente> novaLista) {
         
         if ( novaLista == null || novaLista.isEmpty()) {
-            if ( !listaItens.isEmpty() ) {
-                listaItens.clear();
+            if ( !listaClientes.isEmpty() ) {
+                listaClientes.clear();
                 fireTableRowsDeleted(0,0);
             }
         } else {
-            listaItens = novaLista;
-            fireTableRowsInserted( 0, listaItens.size() - 1);
+            listaClientes = novaLista;
+            fireTableRowsInserted(0, listaClientes.size() - 1);
         }
                 
     }

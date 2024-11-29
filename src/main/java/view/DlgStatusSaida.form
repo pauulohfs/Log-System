@@ -212,7 +212,7 @@
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="grpStatus"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="A Caminho"/>
+            <Property name="text" type="java.lang.String" value="Saiu para Entrega"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>

@@ -4,12 +4,19 @@
  */
 package view;
 
+import control.GerenciadorInterface;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Date;
+import java.util.List;
 import javax.swing.ButtonModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import model.HistoricoStatus;
+import model.Pacote;
+import model.Status;
+import org.hibernate.HibernateException;
 
 /**
  *
@@ -17,9 +24,8 @@ import javax.swing.JOptionPane;
  */
 public class DlgStatusSaida extends javax.swing.JDialog {
 
-    /**
-     * Creates new form DlgRelatorioEntregas
-     */
+    private Pacote pacoteSelecionado;
+
     public DlgStatusSaida(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -33,6 +39,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
         txtLogo.setLayout(new BorderLayout()); // Certifique-se de usar o layout correto
         txtLogo.add(logoLabel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
+        pacoteSelecionado = null;
     }
 
     /**
@@ -96,7 +103,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         grpStatus.add(rdbCaminho);
-        rdbCaminho.setText("A Caminho");
+        rdbCaminho.setText("Saiu para Entrega");
         rdbCaminho.setEnabled(false);
 
         grpStatus.add(rdbEntregue);
@@ -212,23 +219,71 @@ public class DlgStatusSaida extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
 
+        if (validarCampos()) {
+            try {
+
+                if (pacoteSelecionado.getHistoricoStatus().size() > 1) {
+                    if (rdbEntregue.isSelected()) {
+                        HistoricoStatus historico = new HistoricoStatus(pacoteSelecionado, new Status(3, "entregue ao destinatario"), new Date());
+                        pacoteSelecionado.getHistoricoStatus().add(historico);
+                        GerenciadorInterface.getMyInstance().getGerDom().atualizarPacote(pacoteSelecionado);
+                        limparCampos();
+                    }
+
+                }
+            } catch (IllegalStateException erro) {
+
+                JOptionPane.showMessageDialog(this, "Pacote com Status já adicionado", "Alteração de Status", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um pacote de algum entregador.", "Alteração de Status", JOptionPane.INFORMATION_MESSAGE);
+        }
 
     }//GEN-LAST:event_btnSalvarActionPerformed
+    private void limparCampos() {
+        grpStatus.clearSelection();
+        rdbCaminho.setEnabled(false);
+        rdbEntregue.setEnabled(false);
+        cxtID.setText("");
+        cxtEntregador.setText("");
 
+    }
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         if (validarID()) {
             rdbCaminho.setEnabled(true);
             rdbEntregue.setEnabled(true);
-            rdbCaminho.setSelected(true);
 
+            List<Pacote> lista;
+            try {
+                lista = GerenciadorInterface.getMyInstance().getGerDom().pesquisarPacote(1, cxtID.getText());
+                if (lista.isEmpty()) {
+                    limparCampos();
+                    JOptionPane.showMessageDialog(this, "Pacote não encontrado.", "Pesquisa de Pacote", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    for (Pacote pacote : lista) {
+                        pacoteSelecionado = pacote;
+                        cxtEntregador.setText(pacoteSelecionado.getEntregador().getNome());
+                    }
+                    if (pacoteSelecionado.getHistoricoStatus().size() == 2) {
+                        rdbCaminho.setSelected(true);
+                    } else if (pacoteSelecionado.getHistoricoStatus().size() == 3) {
+                        rdbEntregue.setSelected(true);
+                    } else {
+
+                    }
+                }
+            } catch (HibernateException e) {
+                limparCampos();
+                JOptionPane.showMessageDialog(this, "Erro na pesquisa", "Pesquisa de Pacote", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception erroDuplicada) {
+                JOptionPane.showMessageDialog(this, "Faça a saida deste Pacote antes de finalizar a Entrega", "Pacote em Estoque", JOptionPane.INFORMATION_MESSAGE);
+
+            }
         } else {
-            rdbCaminho.setSelected(false);
-            rdbCaminho.setEnabled(false);
-            rdbEntregue.setSelected(false);
-            rdbEntregue.setEnabled(false);
+            limparCampos();
             JOptionPane.showMessageDialog(this, "Digite o ID do pacote ", "Erro na Busca", JOptionPane.ERROR_MESSAGE);
 
         }
@@ -240,9 +295,30 @@ public class DlgStatusSaida extends javax.swing.JDialog {
 
     private boolean validarID() {
         txtID.setForeground(Color.lightGray);
-        //txtDataFim.setForeground(Color.black);
 
         int invalidos = 0;
+        if (cxtID.getText().isEmpty()) {
+            txtID.setForeground(Color.red);
+            invalidos++;
+        }
+
+        if (invalidos == 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    private boolean validarCampos() {
+        txtEntregador.setForeground(Color.lightGray);
+        txtID.setForeground(Color.lightGray);
+        int invalidos = 0;
+
+        if (cxtEntregador.getText().isEmpty()) {
+            txtEntregador.setForeground(Color.red);
+            invalidos++;
+        }
         if (cxtID.getText().isEmpty()) {
             txtID.setForeground(Color.red);
             invalidos++;

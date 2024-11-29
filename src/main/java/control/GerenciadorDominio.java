@@ -7,6 +7,7 @@ package control;
 import dao.ClienteDAO;
 import dao.ConexaoHibernate;
 import dao.GenericDAO;
+import dao.PacoteDAO;
 import java.util.Date;
 import java.util.List;
 import javax.swing.Icon;
@@ -24,11 +25,13 @@ public class GerenciadorDominio {
 
     private GenericDAO genDAO;
     private ClienteDAO cliDAO;
+    private PacoteDAO pacDAO;
 
     public GerenciadorDominio() {
         ConexaoHibernate.getSessionFactory();
         genDAO = new GenericDAO();
         cliDAO = new ClienteDAO();
+        pacDAO = new PacoteDAO();
 
     }
 
@@ -80,6 +83,19 @@ public class GerenciadorDominio {
 
         return pacote.getIdPacote();
 
+    }
+
+    public List<Pacote> pesquisarPacote(int tipo, String pesq) throws HibernateException {
+        switch (tipo) {
+            case 1:
+                return pacDAO.pesquisarID(pesq);
+            default:
+                return null;
+        }
+    }
+
+    public void atualizarPacote(Pacote pacote) throws HibernateException {
+        genDAO.atualizar(pacote);
     }
 
 }

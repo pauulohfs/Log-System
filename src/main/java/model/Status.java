@@ -25,7 +25,7 @@ public class Status implements Serializable {
     @Column( nullable = false)
      private String nomeStatus;
     
-    @OneToMany(mappedBy = "chaveComposta.status")  // referencia o campo na chave composta de HistoricoStatus
+    @OneToMany(mappedBy = "chaveComposta.status" )  // referencia o campo na chave composta de HistoricoStatus
     private List<HistoricoStatus> historicoStatus;
     
 

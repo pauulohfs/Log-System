@@ -7,16 +7,24 @@ package view;
 import control.GerenciadorInterface;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Date;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import model.Entregador;
+import model.HistoricoStatus;
+import model.Pacote;
+import model.Status;
+import org.hibernate.HibernateException;
 
 /**
  *
  * @author phfde
  */
 public class DlgSaida extends javax.swing.JDialog {
+
+    private Pacote pacoteSelecionado;
 
     /**
      * Creates new form DlgEntradas
@@ -35,6 +43,7 @@ public class DlgSaida extends javax.swing.JDialog {
         txtLogo.add(logoLabel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
         cmbEntregador.setSelectedItem(null);
+        pacoteSelecionado = null;
 
     }
 
@@ -247,17 +256,20 @@ public class DlgSaida extends javax.swing.JDialog {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
-        String nome = "";
-        String id = "";
-        String ecommerce = "";
-        String data = "";
-
         if (validarCampos()) {
-            nome = cxtNome.getText();
-            ecommerce = cxtEcommerce.getText();
-
+            if(rdbSaida.isSelected()){
+                HistoricoStatus historico = new HistoricoStatus(pacoteSelecionado,new Status(2,"saiu para entrega"), new Date());
+                pacoteSelecionado.getHistoricoStatus().add(historico);
+                pacoteSelecionado.setEntregador((Entregador)cmbEntregador.getSelectedItem());
+    
+            }else{
+                HistoricoStatus historico = new HistoricoStatus(pacoteSelecionado,new Status(4,"retirada"), new Date());
+                pacoteSelecionado.getHistoricoStatus().add(historico);
+            }
+            GerenciadorInterface.getMyInstance().getGerDom().atualizarPacote(pacoteSelecionado);
+            JOptionPane.showMessageDialog(this, "Alteração de status do pacote de id : " + pacoteSelecionado.getIdPacote());
         } else {
-            JOptionPane.showMessageDialog(this, "Preencha todos os campos", "Erro na Saída de Pacote", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Selecione um pacote", "Erro na Saída de Pacote", JOptionPane.ERROR_MESSAGE);
 
         }
 
@@ -335,6 +347,27 @@ public class DlgSaida extends javax.swing.JDialog {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // TODO add your handling code here:
+        List<Pacote> lista;
+        try {
+            lista = GerenciadorInterface.getMyInstance().getGerDom().pesquisarPacote(1, cxtID.getText());
+            String nomeCliente = "", nomeLoja = "";
+
+            if (lista.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Pacote não encontrado.", "Pesquisa de Pacote", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                for (Pacote pacote : lista) {
+                    pacoteSelecionado = pacote;
+                    nomeCliente = pacote.getCliente().getNome();
+                    nomeLoja = pacote.getLoja();
+                }
+                cxtNome.setText(nomeCliente);
+                cxtEcommerce.setText(nomeLoja);
+            }
+
+        } catch (HibernateException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao pesquisar pacote.");
+
+        }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
 

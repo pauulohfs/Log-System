@@ -6,11 +6,10 @@ package dao;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import java.util.List;
-import model.Cliente;
+import model.Pacote;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -18,9 +17,8 @@ import org.hibernate.Session;
  *
  * @author phfde
  */
-public class ClienteDAO extends GenericDAO {
-
-        private List<Cliente> pesquisar(String pesq, int tipo)  {
+public class PacoteDAO extends GenericDAO {
+    private List<Pacote> pesquisar(String pesq, int tipo)  {
         
         List lista = null;
         Session sessao = null;
@@ -30,14 +28,14 @@ public class ClienteDAO extends GenericDAO {
 
             // OPERAÇÃO
             CriteriaBuilder builder = sessao.getCriteriaBuilder();
-            CriteriaQuery consulta =  builder.createQuery(Cliente.class);
-            Root tabela = consulta.from( Cliente.class );
+            CriteriaQuery consulta =  builder.createQuery(Pacote.class);
+            Root tabela = consulta.from( Pacote.class );
             
             Predicate restricoes = null;
             
             switch (tipo) {
                 case 1: 
-                    restricoes = builder.like(tabela.get("nome")  , pesq + "%");
+                    restricoes = builder.equal( tabela.get("idPacote")  , pesq  );
                     break;
                 case 2:
                     //restricoes = builder.like(tabela.get("endereco").get("bairro")  , pesq + "%");
@@ -67,9 +65,11 @@ public class ClienteDAO extends GenericDAO {
         return lista;
         
     }
-
-    public List<Cliente> pesquisarPorNome(String pesq) {
+    
+        public List<Pacote> pesquisarID(String pesq) {
         return pesquisar(pesq, 1);
     }
-
+    
+    
+    
 }

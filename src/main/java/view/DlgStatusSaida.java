@@ -228,7 +228,12 @@ public class DlgStatusSaida extends javax.swing.JDialog {
                         HistoricoStatus historico = new HistoricoStatus(pacoteSelecionado, new Status(3, "entregue ao destinatario"), new Date());
                         pacoteSelecionado.getHistoricoStatus().add(historico);
                         GerenciadorInterface.getMyInstance().getGerDom().atualizarPacote(pacoteSelecionado);
+                        JOptionPane.showMessageDialog(this, "Status Alterado com Sucesso!", "Alteração de Status", JOptionPane.INFORMATION_MESSAGE);
                         limparCampos();
+                    }else if (pacoteSelecionado.getHistoricoStatus().size()== 3){
+                        JOptionPane.showMessageDialog(this, "Pacote já entregue ao Destinatario!", "Alteração de Status", JOptionPane.INFORMATION_MESSAGE);
+                        rdbEntregue.setSelected(true);
+                    
                     }
 
                 }
@@ -269,7 +274,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
                     }
                     if (pacoteSelecionado.getHistoricoStatus().size() == 2) {
                         rdbCaminho.setSelected(true);
-                    } else if (pacoteSelecionado.getHistoricoStatus().size() == 3) {
+                    } else if (pacoteSelecionado.getHistoricoStatus().size() == 3 || !pacoteSelecionado.getEntregador().equals(null)) {
                         rdbEntregue.setSelected(true);
                     } else {
 
@@ -280,7 +285,8 @@ public class DlgStatusSaida extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Erro na pesquisa", "Pesquisa de Pacote", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception erroDuplicada) {
                 JOptionPane.showMessageDialog(this, "Faça a saida deste Pacote antes de finalizar a Entrega", "Pacote em Estoque", JOptionPane.INFORMATION_MESSAGE);
-
+                rdbCaminho.setEnabled(false);
+                rdbEntregue.setEnabled(false);
             }
         } else {
             limparCampos();

@@ -256,18 +256,40 @@ public class DlgSaida extends javax.swing.JDialog {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
+
         if (validarCampos()) {
-            if(rdbSaida.isSelected()){
-                HistoricoStatus historico = new HistoricoStatus(pacoteSelecionado,new Status(2,"saiu para entrega"), new Date());
-                pacoteSelecionado.getHistoricoStatus().add(historico);
-                pacoteSelecionado.setEntregador((Entregador)cmbEntregador.getSelectedItem());
-    
-            }else{
-                HistoricoStatus historico = new HistoricoStatus(pacoteSelecionado,new Status(4,"retirada"), new Date());
-                pacoteSelecionado.getHistoricoStatus().add(historico);
+            if (rdbSaida.isSelected()) {
+                if (pacoteSelecionado.getHistoricoStatus().size() == 1) {
+                    HistoricoStatus historico = new HistoricoStatus(pacoteSelecionado, new Status(2, "saiu para entrega"), new Date());
+                    pacoteSelecionado.getHistoricoStatus().add(historico);
+                    pacoteSelecionado.setEntregador((Entregador) cmbEntregador.getSelectedItem());
+                    GerenciadorInterface.getMyInstance().getGerDom().atualizarPacote(pacoteSelecionado);
+                    JOptionPane.showMessageDialog(this, "Alteração de status do pacote de id : " + pacoteSelecionado.getIdPacote());
+                } else if (pacoteSelecionado.getHistoricoStatus().get(1).getStatus().getNomeStatus().equals("saiu para entrega")) {
+                    if(pacoteSelecionado.getHistoricoStatus().size() == 3){
+                        JOptionPane.showMessageDialog(this, "Pacote Entregue ao Destinatario");
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Pacote em rota de Entrega");
+                    }
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "Pacote já retirado");
+                }
+
+            } else {
+                if (pacoteSelecionado.getHistoricoStatus().size() == 1) {
+                    HistoricoStatus historico = new HistoricoStatus(pacoteSelecionado, new Status(4, "retirada"), new Date());
+                    pacoteSelecionado.getHistoricoStatus().add(historico);
+                    GerenciadorInterface.getMyInstance().getGerDom().atualizarPacote(pacoteSelecionado);
+                    JOptionPane.showMessageDialog(this, "Alteração de status do pacote de id : " + pacoteSelecionado.getIdPacote());
+                } else if (pacoteSelecionado.getHistoricoStatus().get(1).getStatus().getNomeStatus().equals("retirada")) {
+                    JOptionPane.showMessageDialog(this, "Status já definido no pacote");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Pacote já saiu para entrega ");
+                }
+
             }
-            GerenciadorInterface.getMyInstance().getGerDom().atualizarPacote(pacoteSelecionado);
-            JOptionPane.showMessageDialog(this, "Alteração de status do pacote de id : " + pacoteSelecionado.getIdPacote());
+
         } else {
             JOptionPane.showMessageDialog(this, "Selecione um pacote", "Erro na Saída de Pacote", JOptionPane.ERROR_MESSAGE);
 
@@ -342,7 +364,8 @@ public class DlgSaida extends javax.swing.JDialog {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        GerenciadorInterface.getMyInstance().carregarCombo(cmbEntregador, Entregador.class);
+        GerenciadorInterface.getMyInstance().carregarCombo(cmbEntregador, Entregador.class
+        );
     }//GEN-LAST:event_formComponentShown
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed

@@ -25,12 +25,14 @@ model\Pessoa.class
 view\DlgRelatorioSaidas.class
 view\DlgCadClientes$1.class
 view\DlgRelatorioEntregas$2.class
+view\DlgListaEncomendas$1.class
 view\FrmPrincipal$13.class
 view\DlgCadClientes$6.class
 view\DlgRelatorioSaidas$3.class
 view\DlgCadClientes$3.class
 dao\ClienteDAO.class
 view\FrmPrincipal.class
+view\DlgListaEncomendas.class
 view\DlgEntrada$2.class
 view\DlgStatusSaida.class
 view\FrmPrincipal$15.class
@@ -60,7 +62,6 @@ dao\GenericDAO.class
 model\Pacote.class
 view\DlgRelatorioEntregas$4.class
 view\DlgStatusSaida$2.class
-view\DlgBuscarEncomenda$1.class
 view\DlgCadEntregadores$3.class
 view\DlgRelatorioEntradas$4.class
 view\DlgRelatorioEntradas$2.class
@@ -70,7 +71,6 @@ view\FrmPrincipal$8.class
 view\DlgPesqCliente$1.class
 view\DlgCadEntregadores$1.class
 control\GerenciadorInterface.class
-view\DlgBuscarEncomenda.class
 view\DlgSaida$5.class
 view\FrmPrincipal$3.class
 model\Cliente.class
@@ -81,6 +81,7 @@ model\HistoricoStatus.class
 view\FrmPrincipal$5.class
 view\DlgCadEntregadores$9.class
 view\DlgPesqCliente$3.class
+view\DlgPesqCliente$4.class
 view\FrmPrincipal$1.class
 view\DlgRelatorioEntregas.class
 view\DlgSaida$3.class

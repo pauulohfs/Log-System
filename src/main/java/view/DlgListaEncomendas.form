@@ -53,8 +53,8 @@
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="txtBuscar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="cxtBuscar" min="-2" pref="591" max="-2" attributes="0"/>
-                  <EmptySpace pref="76" max="32767" attributes="0"/>
+                  <Component id="cxtBuscar" min="-2" pref="365" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -74,7 +74,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="txtBuscar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Buscar por nome"/>
+            <Property name="text" type="java.lang.String" value="Cliente:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="cxtBuscar">
@@ -85,7 +85,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Cliente(s)"/>
+            <TitledBorder title="Pacote(s)"/>
           </Border>
         </Property>
       </Properties>
@@ -93,7 +93,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" alignment="0" pref="535" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -117,11 +117,10 @@
             <Component class="javax.swing.JTable" name="tblClientes">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="20">
-                    <Column editable="false" title="Nome" type="java.lang.Object"/>
-                    <Column editable="false" title="CPF" type="java.lang.Object"/>
-                    <Column editable="false" title="Telefone" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                  <Table columnCount="3" rowCount="20">
+                    <Column editable="false" title="ID" type="java.lang.Object"/>
+                    <Column editable="false" title="Descricao" type="java.lang.Object"/>
+                    <Column editable="false" title="Status" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="showHorizontalLines" type="boolean" value="true"/>

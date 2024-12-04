@@ -10,15 +10,20 @@ import javax.swing.JTextField;
  *
  * @author phfde
  */
-public class DlgBuscarEncomenda extends javax.swing.JDialog {
+public class DlgListaEncomendas extends javax.swing.JDialog {
 
     /**
      * Creates new form DlgBuscar
      */
-    public DlgBuscarEncomenda(java.awt.Frame parent, boolean modal) {
+    public DlgListaEncomendas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        cxtBuscar.setEnabled(false);
+    }
+    
+    public void setText(String nome){
+        cxtBuscar.setText(nome);
     }
 
 
@@ -41,7 +46,7 @@ public class DlgBuscarEncomenda extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar Encomenda");
 
-        txtBuscar.setText("Buscar por nome");
+        txtBuscar.setText("Cliente:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -51,8 +56,8 @@ public class DlgBuscarEncomenda extends javax.swing.JDialog {
                 .addGap(34, 34, 34)
                 .addComponent(txtBuscar)
                 .addGap(18, 18, 18)
-                .addComponent(cxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addComponent(cxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -64,37 +69,37 @@ public class DlgBuscarEncomenda extends javax.swing.JDialog {
                 .addGap(13, 13, 13))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente(s)"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pacote(s)"));
 
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nome", "CPF", "Telefone", "Title 4"
+                "ID", "Descricao", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -109,7 +114,7 @@ public class DlgBuscarEncomenda extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

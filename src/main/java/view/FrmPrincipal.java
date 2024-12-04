@@ -507,7 +507,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mniBuscaPorCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniBuscaPorCPFActionPerformed
-        GerenciadorInterface.getMyInstance().abrirBuscarEncomenda();
+        GerenciadorInterface.getMyInstance().abrirPesqCliente();
     }//GEN-LAST:event_mniBuscaPorCPFActionPerformed
 
     private void mnuCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadClienteActionPerformed
@@ -543,7 +543,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         String nome = "";
         if (validarCampos()) {
             nome = cxtBuscar.getText();
-            GerenciadorInterface.getMyInstance().abrirPesqCliente();
+            GerenciadorInterface.getMyInstance().abrirPesqCliente(nome);
+            
         } else {
             JOptionPane.showMessageDialog(this, "Digite o Cliente que Deseja Buscar", "Erro na Busca", JOptionPane.ERROR_MESSAGE);
 

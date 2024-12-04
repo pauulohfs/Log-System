@@ -10,11 +10,10 @@ import dao.GenericDAO;
 import dao.PacoteDAO;
 import java.util.Date;
 import java.util.List;
-import javax.swing.Icon;
+
 import model.Cliente;
 import model.Entregador;
 import model.Pacote;
-import model.Veiculo;
 import org.hibernate.HibernateException;
 
 /**

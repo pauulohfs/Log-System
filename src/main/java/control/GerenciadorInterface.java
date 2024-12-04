@@ -7,27 +7,25 @@ package control;
 import com.formdev.flatlaf.FlatDarkLaf;
 import dao.ConexaoHibernate;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Frame;
-import java.awt.TextField;
+
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
+
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import model.Cliente;
 import org.hibernate.HibernateException;
-import view.DlgBuscarEncomenda;
+import view.DlgListaEncomendas;
 import view.DlgCadClientes;
 import view.DlgCadEntregadores;
 import view.DlgEntrada;
@@ -39,24 +37,19 @@ import view.DlgSaida;
 import view.DlgStatusSaida;
 import view.FrmPrincipal;
 
-/**
- *
- * @author phfde
- */
 public class GerenciadorInterface {
 
     private FrmPrincipal programa = null;
-    private  DlgCadClientes cadCli = null;
-    private  DlgCadEntregadores cadEntregadores = null;
-    private  DlgSaida saidas = null;
-    private  DlgEntrada entradas = null;
-    private  DlgBuscarEncomenda buscarEncomenda = null;
-    private  DlgRelatorioEntregas entregas = null;
-    private  DlgRelatorioEntradas relatorioEntradas = null;
-    private  DlgRelatorioSaidas relatorioSaidas = null;
-    private  DlgStatusSaida status = null;
-    private  DlgPesqCliente pesqCli = null;
-    
+    private DlgCadClientes cadCli = null;
+    private DlgCadEntregadores cadEntregadores = null;
+    private DlgSaida saidas = null;
+    private DlgEntrada entradas = null;
+    private DlgListaEncomendas listarEncomendas = null;
+    private DlgRelatorioEntregas entregas = null;
+    private DlgRelatorioEntradas relatorioEntradas = null;
+    private DlgRelatorioSaidas relatorioSaidas = null;
+    private DlgStatusSaida status = null;
+    private DlgPesqCliente pesqCli = null;
 
     GerenciadorDominio gerDom;
     boolean banco = false;
@@ -94,7 +87,11 @@ public class GerenciadorInterface {
                 JOptionPane.showMessageDialog(parent, "Erro ao abrir a janela " + classe.getName() + ". " + ex.getMessage());
             }
         }
-        dlg.setVisible(true);
+        if (dlg.getClass().equals(DlgPesqCliente.class) || dlg.getClass().equals(DlgListaEncomendas.class)) {
+
+        } else {
+            dlg.setVisible(true);
+        }
 
         return dlg;
     }
@@ -140,19 +137,42 @@ public class GerenciadorInterface {
         abrirJanela(programa, cadCli, DlgCadClientes.class);
     }
 
+    public Cliente abrirPesqCliente(String nome) {
+        pesqCli = (DlgPesqCliente) abrirJanela(programa, pesqCli, DlgPesqCliente.class);
+        pesqCli.resetaJanela();
+        if (nome == null) {
+        } else {
+            pesqCli.setTexto(nome);
+            pesqCli.clickButton();
+        }
+        pesqCli.setVisible(true);
+
+        return pesqCli.getCliSelecionado();
+
+    }
+
     public Cliente abrirPesqCliente() {
         pesqCli = (DlgPesqCliente) abrirJanela(programa, pesqCli, DlgPesqCliente.class);
+        pesqCli.resetaJanela();
+
+        pesqCli.setVisible(true);
+
         return pesqCli.getCliSelecionado();
-        
+
     }
 
     public void abrirCadastroEntregadores() {
         abrirJanela(programa, cadEntregadores, DlgCadEntregadores.class);
     }
 
-    public void abrirBuscarEncomenda() {
+    public void abrirListarEncomendas(String nome) {
 
-        abrirJanela(programa, buscarEncomenda, DlgBuscarEncomenda.class);
+        listarEncomendas = (DlgListaEncomendas) abrirJanela(programa, listarEncomendas, DlgListaEncomendas.class);
+        if (nome == null) {
+        } else {
+            listarEncomendas.setText(nome);
+        }
+        listarEncomendas.setVisible(true);
 
     }
 
@@ -177,27 +197,25 @@ public class GerenciadorInterface {
         abrirJanela(programa, relatorioSaidas, DlgRelatorioSaidas.class);
     }
 
-
     public void abrirStatus() {
         abrirJanela(programa, status, DlgStatusSaida.class);
     }
-    
-        public void carregarCombo( JComboBox combo, Class classe) {
-        
+
+    public void carregarCombo(JComboBox combo, Class classe) {
+
         try {
             List lista = gerDom.listar(classe);
-            combo.setModel(  new DefaultComboBoxModel( lista.toArray()  ) ); 
+            combo.setModel(new DefaultComboBoxModel(lista.toArray()));
         } catch (HibernateException ex) {
-            JOptionPane.showMessageDialog(programa, ex, "ERRO ao carregar Combobox.", JOptionPane.ERROR_MESSAGE  );
-        } 
-        
+            JOptionPane.showMessageDialog(programa, ex, "ERRO ao carregar Combobox.", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
     //private final Dlg config = null;
     public static void main(String args[]) throws UnsupportedLookAndFeelException {
 
         UIManager.setLookAndFeel(new FlatDarkLaf());
-
 
         // TRADUÇÃO
         javax.swing.UIManager.put("OptionPane.yesButtonText", "Sim");

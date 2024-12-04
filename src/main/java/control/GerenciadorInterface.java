@@ -165,13 +165,8 @@ public class GerenciadorInterface {
         abrirJanela(programa, cadEntregadores, DlgCadEntregadores.class);
     }
 
-    public void abrirListarEncomendas(String nome) {
-
-        listarEncomendas = (DlgListaEncomendas) abrirJanela(programa, listarEncomendas, DlgListaEncomendas.class);
-        if (nome == null) {
-        } else {
-            listarEncomendas.setText(nome);
-        }
+    public void abrirListarEncomendas(Cliente cliente) {
+        listarEncomendas = new DlgListaEncomendas(programa, true, cliente);
         listarEncomendas.setVisible(true);
 
     }

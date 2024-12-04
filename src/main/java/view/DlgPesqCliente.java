@@ -2,6 +2,7 @@ package view;
 
 import control.ClienteAbstractTableModel;
 import control.GerenciadorInterface;
+import control.PacoteAbstractTableModel;
 import java.awt.Component;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import model.Cliente;
+import model.Pacote;
 import org.hibernate.HibernateException;
 
 /**
@@ -23,6 +25,7 @@ public class DlgPesqCliente extends javax.swing.JDialog {
 
     private Cliente cliSelecionado;
     private ClienteAbstractTableModel tableClienteModel;
+    private PacoteAbstractTableModel tablePacotesModel;
 
     public DlgPesqCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -166,6 +169,18 @@ public class DlgPesqCliente extends javax.swing.JDialog {
         txtPesq.setText(nome);
     }
 
+    private Cliente pegarLinhaSelecionada() {
+        cliSelecionado = null;
+        int linha = tblClientes.getSelectedRow();
+        if (linha >= 0) {
+            linha = tblClientes.convertRowIndexToModel(linha);
+            cliSelecionado = tableClienteModel.getCliente(linha);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um CLIENTE.");
+        }
+        return cliSelecionado;
+    }
+
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         try {
@@ -203,15 +218,11 @@ public class DlgPesqCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnPacotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacotesActionPerformed
-        // TODO add your handling code here:
-        int linha = tblClientes.getSelectedRow();
-        try {
-            if (tableClienteModel.getCliente(linha) != null) {
-                String nome = tableClienteModel.getCliente(linha).getNome();
-                GerenciadorInterface.getMyInstance().abrirListarEncomendas(nome);
-            }
-        } catch (IndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(this, "Selecione um cliente para listagem de Pacotes", "Listagem de Pacotes", JOptionPane.INFORMATION_MESSAGE);
+
+        cliSelecionado = pegarLinhaSelecionada();
+        if (cliSelecionado != null) {
+            GerenciadorInterface.getMyInstance().abrirListarEncomendas(cliSelecionado);
+
         }
 
 

@@ -4,7 +4,12 @@
  */
 package view;
 
+import control.GerenciadorInterface;
+import control.PacoteAbstractTableModel;
+import java.util.List;
 import javax.swing.JTextField;
+import model.Cliente;
+import model.Pacote;
 
 /**
  *
@@ -15,17 +20,24 @@ public class DlgListaEncomendas extends javax.swing.JDialog {
     /**
      * Creates new form DlgBuscar
      */
-    public DlgListaEncomendas(java.awt.Frame parent, boolean modal) {
+    private Cliente cliSelecionado;
+    private PacoteAbstractTableModel pacoteTableModel;
+
+    public DlgListaEncomendas(java.awt.Frame parent, boolean modal, Cliente cliente) {
         super(parent, modal);
         initComponents();
+        cliSelecionado = cliente;
+
         this.setLocationRelativeTo(null);
         cxtBuscar.setEnabled(false);
-    }
-    
-    public void setText(String nome){
-        cxtBuscar.setText(nome);
+        pacoteTableModel = new PacoteAbstractTableModel();
+        tblPacotes.setModel(pacoteTableModel);
+
     }
 
+    public void setText(String nome) {
+        cxtBuscar.setText(nome);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,10 +53,15 @@ public class DlgListaEncomendas extends javax.swing.JDialog {
         cxtBuscar = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblClientes = new javax.swing.JTable();
+        tblPacotes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar Encomenda");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         txtBuscar.setText("Cliente:");
 
@@ -71,7 +88,7 @@ public class DlgListaEncomendas extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pacote(s)"));
 
-        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tblPacotes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -106,9 +123,9 @@ public class DlgListaEncomendas extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        tblClientes.setShowHorizontalLines(true);
-        tblClientes.setShowVerticalLines(true);
-        jScrollPane1.setViewportView(tblClientes);
+        tblPacotes.setShowHorizontalLines(true);
+        tblPacotes.setShowVerticalLines(true);
+        jScrollPane1.setViewportView(tblPacotes);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -146,17 +163,32 @@ public class DlgListaEncomendas extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        if (cliSelecionado != null) {
+
+            GerenciadorInterface.getMyInstance().getGerDom().getPacotes(cliSelecionado );
+            cxtBuscar.setText(cliSelecionado.getNome());
+
+            List<Pacote> listaPacotes = cliSelecionado.getPacotes();
+
+            for (Pacote pacote : listaPacotes) {
+                GerenciadorInterface.getMyInstance().getGerDom().getHistoricoPacote(pacote);
+            }
+            pacoteTableModel.setLista(listaPacotes);
+
+        }
+    }//GEN-LAST:event_formComponentShown
+
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cxtBuscar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblClientes;
+    private javax.swing.JTable tblPacotes;
     private javax.swing.JLabel txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

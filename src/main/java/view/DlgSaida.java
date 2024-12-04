@@ -258,20 +258,21 @@ public class DlgSaida extends javax.swing.JDialog {
         // TODO add your handling code here:
 
         if (validarCampos()) {
+            GerenciadorInterface.getMyInstance().getGerDom().getHistoricoPacote(pacoteSelecionado);
             if (rdbSaida.isSelected()) {
                 if (pacoteSelecionado.getHistoricoStatus().size() == 1) {
                     HistoricoStatus historico = new HistoricoStatus(pacoteSelecionado, new Status(2, "saiu para entrega"), new Date());
                     pacoteSelecionado.getHistoricoStatus().add(historico);
-                    pacoteSelecionado.setEntregador((Entregador) cmbEntregador.getSelectedItem());
+                    pacoteSelecionado.setEntregador((Entregador) cmbEntregador.getSelectedItem());         
                     GerenciadorInterface.getMyInstance().getGerDom().atualizarPacote(pacoteSelecionado);
                     JOptionPane.showMessageDialog(this, "Alteração de status do pacote de id : " + pacoteSelecionado.getIdPacote());
                 } else if (pacoteSelecionado.getHistoricoStatus().get(1).getStatus().getNomeStatus().equals("saiu para entrega")) {
-                    if(pacoteSelecionado.getHistoricoStatus().size() == 3){
+                    if (pacoteSelecionado.getHistoricoStatus().size() == 3) {
                         JOptionPane.showMessageDialog(this, "Pacote Entregue ao Destinatario");
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(this, "Pacote em rota de Entrega");
                     }
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(this, "Pacote já retirado");
                 }

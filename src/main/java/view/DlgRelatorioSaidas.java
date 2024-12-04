@@ -69,11 +69,11 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Data", "ID", "Cliente", "Saída", "Status"
+                "Data", "ID", "Cliente", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

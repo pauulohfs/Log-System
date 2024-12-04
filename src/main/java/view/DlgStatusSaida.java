@@ -221,6 +221,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
         if (validarCampos()) {
+            GerenciadorInterface.getMyInstance().getGerDom().getHistoricoPacote(pacoteSelecionado);
             try {
 
                 if (pacoteSelecionado.getHistoricoStatus().size() > 1) {
@@ -230,10 +231,10 @@ public class DlgStatusSaida extends javax.swing.JDialog {
                         GerenciadorInterface.getMyInstance().getGerDom().atualizarPacote(pacoteSelecionado);
                         JOptionPane.showMessageDialog(this, "Status Alterado com Sucesso!", "Alteração de Status", JOptionPane.INFORMATION_MESSAGE);
                         limparCampos();
-                    }else if (pacoteSelecionado.getHistoricoStatus().size()== 3){
+                    } else if (pacoteSelecionado.getHistoricoStatus().size() == 3) {
                         JOptionPane.showMessageDialog(this, "Pacote já entregue ao Destinatario!", "Alteração de Status", JOptionPane.INFORMATION_MESSAGE);
                         rdbEntregue.setSelected(true);
-                    
+
                     }
 
                 }
@@ -258,6 +259,7 @@ public class DlgStatusSaida extends javax.swing.JDialog {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         if (validarID()) {
+
             rdbCaminho.setEnabled(true);
             rdbEntregue.setEnabled(true);
 
@@ -270,13 +272,19 @@ public class DlgStatusSaida extends javax.swing.JDialog {
                 } else {
                     for (Pacote pacote : lista) {
                         pacoteSelecionado = pacote;
-                        cxtEntregador.setText(pacoteSelecionado.getEntregador().getNome());
+                        GerenciadorInterface.getMyInstance().getGerDom().getHistoricoPacote(pacoteSelecionado);
+                        if (pacoteSelecionado.getHistoricoStatus().get(1).getStatus().getNomeStatus().equals("saiu para entrega")) {
+                            cxtEntregador.setText(pacoteSelecionado.getEntregador().getNome());
+                        }
                     }
-                    if (pacoteSelecionado.getHistoricoStatus().size() == 2) {
+                    if (pacoteSelecionado.getHistoricoStatus().size() == 2
+                            && pacoteSelecionado.getHistoricoStatus().get(1).getStatus().getNomeStatus().equals("saiu para entrega")) {
                         rdbCaminho.setSelected(true);
-                    } else if (pacoteSelecionado.getHistoricoStatus().size() == 3 || !pacoteSelecionado.getEntregador().equals(null)) {
+                    } else if (pacoteSelecionado.getHistoricoStatus().size() == 3) {
                         rdbEntregue.setSelected(true);
-                    } else {
+                    } else if ((pacoteSelecionado.getHistoricoStatus().size() == 2
+                            && pacoteSelecionado.getHistoricoStatus().get(1).getStatus().getNomeStatus().equals("retirada"))) {
+                        JOptionPane.showMessageDialog(this, "Pacote Retirado", "Pesquisa de Pacote", JOptionPane.INFORMATION_MESSAGE);
 
                     }
                 }
@@ -284,10 +292,10 @@ public class DlgStatusSaida extends javax.swing.JDialog {
                 limparCampos();
                 JOptionPane.showMessageDialog(this, "Erro na pesquisa", "Pesquisa de Pacote", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception erroDuplicada) {
-                JOptionPane.showMessageDialog(this, "Faça a saida deste Pacote antes de finalizar a Entrega", "Pacote em Estoque", JOptionPane.INFORMATION_MESSAGE);
-                rdbCaminho.setEnabled(false);
-                rdbEntregue.setEnabled(false);
-            }
+            JOptionPane.showMessageDialog(this, "Faça a saida deste Pacote antes de finalizar a Entrega", "Pacote em Estoque", JOptionPane.INFORMATION_MESSAGE);
+             rdbCaminho.setEnabled(false);
+             rdbEntregue.setEnabled(false);
+             }
         } else {
             limparCampos();
             JOptionPane.showMessageDialog(this, "Digite o ID do pacote ", "Erro na Busca", JOptionPane.ERROR_MESSAGE);

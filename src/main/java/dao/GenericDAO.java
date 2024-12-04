@@ -112,5 +112,6 @@ public class GenericDAO {
             throw new HibernateException(erro); // Repassa a exceção para tratamento
         }
     }
+    
 
 }

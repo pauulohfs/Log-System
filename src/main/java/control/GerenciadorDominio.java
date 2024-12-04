@@ -96,5 +96,14 @@ public class GerenciadorDominio {
     public void atualizarPacote(Pacote pacote) throws HibernateException {
         genDAO.atualizar(pacote);
     }
+    
+    public void getHistoricoPacote(Pacote pacote) throws HibernateException{
+        pacDAO.carregarStatus(pacote);
+    }
+    
+    public void getPacotes(Cliente cliente) throws HibernateException{
+        cliDAO.carregarPacotes(cliente);
+    
+    }
 
 }

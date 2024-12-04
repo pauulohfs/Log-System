@@ -52,7 +52,7 @@ public class Pacote implements Serializable {
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "chaveComposta.pacote", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "chaveComposta.pacote", cascade = CascadeType.ALL)
     private List<HistoricoStatus> historicoStatus;
 
     public Pacote() {

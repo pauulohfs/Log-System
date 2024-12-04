@@ -31,7 +31,7 @@ public class PacoteAbstractTableModel extends AbstractTableModel {
     // Títulos das colunas
     @Override
     public String getColumnName(int column) {
-        String nomesColunas[] = {"ID", "Descricao", "Cliente" };        
+        String nomesColunas[] = {"ID", "Descricao", "Status" };        
         return nomesColunas[column];        
     }
     
@@ -43,7 +43,7 @@ public class PacoteAbstractTableModel extends AbstractTableModel {
         switch (columnIndex) {
             case 0: return pacote.getIdPacote();
             case 1: return pacote.getDescricao();
-            case 2: return pacote.getCliente().getNome();
+            case 2: return pacote.getHistoricoStatus().get(pacote.getHistoricoStatus().size()-1).getStatus().getNomeStatus();
             default: return null;
         }
     }

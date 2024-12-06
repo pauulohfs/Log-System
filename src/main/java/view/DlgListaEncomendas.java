@@ -7,7 +7,6 @@ package view;
 import control.GerenciadorInterface;
 import control.PacoteAbstractTableModel;
 import java.util.List;
-import javax.swing.JTextField;
 import model.Cliente;
 import model.Pacote;
 

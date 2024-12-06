@@ -4,11 +4,19 @@
  */
 package view;
 
+import control.GerenciadorInterface;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Pacote;
 
 /**
  *
@@ -48,7 +56,7 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
         txtLogo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPacotes = new javax.swing.JTable();
         btnCancelar = new javax.swing.JButton();
         btnExportar = new javax.swing.JButton();
         txtDataInicio = new javax.swing.JLabel();
@@ -64,7 +72,7 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
         txtLogo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtLogo.setForeground(new java.awt.Color(204, 204, 204));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPacotes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -80,7 +88,7 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPacotes);
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/remove.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -140,19 +148,22 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(159, 159, 159))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDataInicio)
-                            .addComponent(txtDataFim))
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cxtDataInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                            .addComponent(cxtDataFim))
-                        .addGap(45, 45, 45)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(136, 136, 136))))
+                        .addComponent(txtDataInicio)
+                        .addGap(26, 26, 26)
+                        .addComponent(cxtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(txtDataFim)
+                        .addGap(18, 18, 18)
+                        .addComponent(cxtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(217, 217, 217)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -160,19 +171,14 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cxtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDataInicio))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cxtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDataFim)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cxtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataInicio)
+                    .addComponent(txtDataFim)
+                    .addComponent(cxtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,6 +205,47 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         if (validarCampos()) {
+            String dtInicio = cxtDataInicio.getText();
+            String dtFim = cxtDataFim.getText();
+            DefaultTableModel model = (DefaultTableModel) tblPacotes.getModel();
+
+            Date dataInicio = null;
+            Date dataFim = null;
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate localDataInicio = LocalDate.parse(dtInicio, formatter);
+                LocalDate localDataFim = LocalDate.parse(dtFim, formatter);
+                dataInicio = Date.from(localDataInicio.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                dataFim = Date.from(localDataFim.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+            } catch (Exception erro) {
+                model.setRowCount(0);
+                JOptionPane.showMessageDialog(this, "Data Inválida", "Erro Data", JOptionPane.ERROR_MESSAGE);
+                return;
+
+            }
+            if (dataInicio.after(dataFim)) {
+                model.setRowCount(0);
+                JOptionPane.showMessageDialog(this, "A data de início não pode ser posterior à data de fim.", "Erro na Validação de Datas", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            List<Pacote> lista = GerenciadorInterface.getMyInstance().getGerDom().pesqPacoteData(2, dataInicio, dataFim);
+            if(lista.isEmpty()){
+                model.setRowCount(0);
+                JOptionPane.showMessageDialog(this, "Sem saídas entre as Datas", "Pesquisa de Saídas", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            
+            // Limpa os dados da tabela antes de adicionar novos
+            model.setRowCount(0);
+
+            // Adiciona os pacotes à tabela
+            for (Pacote pacote : lista) {
+                GerenciadorInterface.getMyInstance().getGerDom().getHistoricoPacote(pacote);
+                model.addRow(new Object[]{pacote.getDtEntrada(), pacote.getIdPacote(), pacote.getCliente().getNome(),
+                    pacote.getHistoricoStatus().get(pacote.getHistoricoStatus().size()-1).getStatus().getNomeStatus()});
+            }
 
         } else {
             JOptionPane.showMessageDialog(this, "Preencha os Campos", "Erro na Busca", JOptionPane.ERROR_MESSAGE);
@@ -239,7 +286,7 @@ public class DlgRelatorioSaidas extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField cxtDataInicio;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblPacotes;
     private javax.swing.JLabel txtDataFim;
     private javax.swing.JLabel txtDataInicio;
     private javax.swing.JLabel txtLogo;

@@ -96,14 +96,30 @@ public class GerenciadorDominio {
     public void atualizarPacote(Pacote pacote) throws HibernateException {
         genDAO.atualizar(pacote);
     }
-    
-    public void getHistoricoPacote(Pacote pacote) throws HibernateException{
+
+    public void getHistoricoPacote(Pacote pacote) throws HibernateException {
         pacDAO.carregarStatus(pacote);
     }
-    
-    public void getPacotes(Cliente cliente) throws HibernateException{
+
+    public void getPacotes(Cliente cliente) throws HibernateException {
         cliDAO.carregarPacotes(cliente);
-    
+
+    }
+
+    public List<Pacote> pesqPacoteData(int flag, Date inicio, Date fim) throws HibernateException {
+        switch (flag) {
+            case 1:
+                return pacDAO.pesquisaPorData("entrada", inicio, fim);
+            case 2:
+                return pacDAO.pesquisaPorData("saida", inicio, fim);
+            default:
+                return null;
+        }
+
+    }
+
+    public List<Pacote> listPacoteEntregador(Entregador entregador) throws HibernateException {
+        return pacDAO.listarPacotePorEntregador(entregador);
     }
 
 }

@@ -6,18 +6,20 @@ package view;
 
 import control.GerenciadorInterface;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.event.KeyEvent;
+
+
 import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
-import javax.swing.JFrame;
+
+
 import javax.swing.JLabel;
 import javax.swing.JMenu;
-import javax.swing.JMenuItem;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
 
 /**
  *
@@ -26,7 +28,8 @@ import javax.swing.JTextField;
 public class FrmPrincipal extends javax.swing.JFrame {
 
     public FrmPrincipal() {
-        initComponents();  // Inicializa os componentes gerados pela ferramenta de design
+        initComponents();
+
 
         // Carrega a imagem do logo
         ImageIcon logoIcon = new ImageIcon("img3.png");
@@ -48,7 +51,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     public JMenu getMnuBuscar() {
         return mnuBuscar;
     }
-
 
     public JMenu getMnuCadastrar() {
         return mnuCadastrar;
@@ -106,11 +108,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         return txtBD;
     }
 
-    
-
-
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -163,6 +160,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cxtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cxtBuscarActionPerformed(evt);
+            }
+        });
+        cxtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cxtBuscarKeyPressed(evt);
             }
         });
 
@@ -544,14 +546,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
         if (validarCampos()) {
             nome = cxtBuscar.getText();
             GerenciadorInterface.getMyInstance().abrirPesqCliente(nome);
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "Digite o Cliente que Deseja Buscar", "Erro na Busca", JOptionPane.ERROR_MESSAGE);
 
         }
-        
+
         cxtBuscar.setText("");
-        
+
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -575,6 +577,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         GerenciadorInterface.getMyInstance().abrirRelatorioEntradas();
     }//GEN-LAST:event_btnRelatorioEntradaActionPerformed
 
+    private void cxtBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxtBuscarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnBuscar.doClick();
+        
+        }
+        
+    }//GEN-LAST:event_cxtBuscarKeyPressed
+
     public String getCxtBuscar() {
         return cxtBuscar.getText();
     }
@@ -582,6 +593,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     public void setCxtBuscar(JTextField cxtBuscar) {
         this.cxtBuscar = cxtBuscar;
     }
+
     private boolean validarCampos() {
         //String msgErro = "";
         int invalidos = 0;

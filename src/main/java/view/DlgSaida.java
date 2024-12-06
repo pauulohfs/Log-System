@@ -263,7 +263,8 @@ public class DlgSaida extends javax.swing.JDialog {
                 if (pacoteSelecionado.getHistoricoStatus().size() == 1) {
                     HistoricoStatus historico = new HistoricoStatus(pacoteSelecionado, new Status(2, "saiu para entrega"), new Date());
                     pacoteSelecionado.getHistoricoStatus().add(historico);
-                    pacoteSelecionado.setEntregador((Entregador) cmbEntregador.getSelectedItem());         
+                    pacoteSelecionado.setEntregador((Entregador) cmbEntregador.getSelectedItem());
+                    pacoteSelecionado.setDtSaida(new Date());
                     GerenciadorInterface.getMyInstance().getGerDom().atualizarPacote(pacoteSelecionado);
                     JOptionPane.showMessageDialog(this, "Alteração de status do pacote de id : " + pacoteSelecionado.getIdPacote());
                 } else if (pacoteSelecionado.getHistoricoStatus().get(1).getStatus().getNomeStatus().equals("saiu para entrega")) {
@@ -281,6 +282,7 @@ public class DlgSaida extends javax.swing.JDialog {
                 if (pacoteSelecionado.getHistoricoStatus().size() == 1) {
                     HistoricoStatus historico = new HistoricoStatus(pacoteSelecionado, new Status(4, "retirada"), new Date());
                     pacoteSelecionado.getHistoricoStatus().add(historico);
+                    pacoteSelecionado.setDtSaida(new Date());
                     GerenciadorInterface.getMyInstance().getGerDom().atualizarPacote(pacoteSelecionado);
                     JOptionPane.showMessageDialog(this, "Alteração de status do pacote de id : " + pacoteSelecionado.getIdPacote());
                 } else if (pacoteSelecionado.getHistoricoStatus().get(1).getStatus().getNomeStatus().equals("retirada")) {

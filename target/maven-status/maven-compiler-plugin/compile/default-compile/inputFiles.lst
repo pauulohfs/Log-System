@@ -24,7 +24,6 @@ D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\Endereco.
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\model\HistoricoStatusPK.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\dao\ConexaoHibernate.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\control\ClienteAbstractTableModel.java
-D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\control\EntregasAbstractTableModel.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\DlgEntrada.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\view\FrmPrincipal.java
 D:\Conteúdo-SI\Programação\POO2\LogBeta\Log-System\src\main\java\dao\ClienteDAO.java

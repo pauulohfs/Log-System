@@ -7,10 +7,17 @@ package view;
 import control.GerenciadorInterface;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Entregador;
+import model.Pacote;
 
 /**
  *
@@ -51,7 +58,7 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPacotes = new javax.swing.JTable();
         btnCancelar = new javax.swing.JButton();
         btnExportar = new javax.swing.JButton();
 
@@ -69,8 +76,6 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
         txtLogo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtLogo.setForeground(new java.awt.Color(204, 204, 204));
 
-        cmbEntregador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Joao", "Pedro" }));
-
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/search.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +84,7 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPacotes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -95,7 +100,7 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPacotes);
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/remove.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -117,35 +122,35 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtEntregador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbEntregador, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 25, 25))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(159, 159, 159))))
+                .addComponent(btnExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(190, 190, 190))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtEntregador)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbEntregador, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(212, 212, 212)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(117, 117, 117)
-                        .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(117, Short.MAX_VALUE))
+                        .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(226, 226, 226)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,18 +187,40 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this, "Função Ainda não Implementada", "Erro de Exportação de Relatório", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnExportarActionPerformed
 
+
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         if (validarCampos()) {
+            DefaultTableModel model = (DefaultTableModel) tblPacotes.getModel();
+            List<Pacote> lista = GerenciadorInterface.getMyInstance().getGerDom().listPacoteEntregador((Entregador) cmbEntregador.getSelectedItem());
+            if(lista.isEmpty()){
+                model.setRowCount(0);
+                JOptionPane.showMessageDialog(this, "Entregador Sem Pacotes", "Pesquisa por Entregador",JOptionPane.INFORMATION_MESSAGE);  
+                return;
+            } 
+            
+            // limpa os dados da tabela antes de adicionar novos
+            model.setRowCount(0);
+
+            // adiciona os pacotes à tabela
+            for (Pacote pacote : lista) {
+                GerenciadorInterface.getMyInstance().getGerDom().getHistoricoPacote(pacote);
+
+
+                model.addRow(new Object[]{pacote.getDtSaida(), pacote.getIdPacote(), pacote.getCliente().getNome(),
+                    pacote.getHistoricoStatus().get(pacote.getHistoricoStatus().size() - 1).getStatus().getNomeStatus()});
+            }
 
         } else {
             JOptionPane.showMessageDialog(this, "Selecione um Entregador", "Erro de Exportação de Relatório", JOptionPane.ERROR_MESSAGE);
+
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        GerenciadorInterface.getMyInstance().carregarCombo(cmbEntregador, Entregador.class);
+        GerenciadorInterface.getMyInstance().carregarCombo(cmbEntregador, Entregador.class
+        );
         cmbEntregador.setSelectedItem(null);
     }//GEN-LAST:event_formComponentShown
     private boolean validarCampos() {
@@ -224,7 +251,7 @@ public class DlgRelatorioEntregas extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cmbEntregador;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblPacotes;
     private javax.swing.JLabel txtEntregador;
     private javax.swing.JLabel txtLogo;
     // End of variables declaration//GEN-END:variables

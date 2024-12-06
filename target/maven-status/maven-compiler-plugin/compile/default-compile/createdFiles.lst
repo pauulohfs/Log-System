@@ -17,7 +17,6 @@ view\DlgRelatorioEntregas$5.class
 view\DlgCadClientes$4.class
 view\DlgEntrada.class
 view\DlgCadClientes$5.class
-control\EntregasAbstractTableModel.class
 view\DlgRelatorioSaidas$1.class
 view\DlgRelatorioEntradas$1.class
 model\Status.class
@@ -32,6 +31,7 @@ view\DlgRelatorioSaidas$3.class
 view\DlgCadClientes$3.class
 dao\ClienteDAO.class
 view\FrmPrincipal.class
+view\FrmPrincipal$16.class
 view\DlgListaEncomendas.class
 view\DlgEntrada$2.class
 view\DlgStatusSaida.class
